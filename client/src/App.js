@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./containers/Public";
+import { Home, Login } from "./containers/Public";
 import path from "./utils/constant";
 
 function App() {
@@ -9,6 +7,7 @@ function App() {
     <div className="bg-red-500">
       <Routes>
         <Route path={path.HOME} element={<Home />}></Route>
+        <Route path={path.LOGIN} element={<Login />}></Route>
       </Routes>
     </div>
   );
