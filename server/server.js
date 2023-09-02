@@ -1,8 +1,8 @@
 import express from "express";
 require("dotenv").config();
 import cors from "cors";
-
 const app = express();
+import initRoutes from "./src/routes";
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -12,6 +12,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+initRoutes(app);
 app.use("/", (req, res) => {
   res.send("server on ...");
 });
