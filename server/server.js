@@ -3,6 +3,7 @@ require("dotenv").config();
 import cors from "cors";
 const app = express();
 import initRoutes from "./src/routes";
+import connectDatabase from "./src/config/connectDatabase";
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -11,7 +12,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+connectDatabase();
 initRoutes(app);
 app.use("/", (req, res) => {
   res.send("server on ...");
