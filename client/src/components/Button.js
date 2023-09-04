@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 const Button = ({ text, textColor, bgColor, IcAfter, onClick, fullWidth }) => {
-  console.log("re-der");
   return (
     <div>
       <button
