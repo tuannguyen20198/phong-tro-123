@@ -1,28 +1,93 @@
 import React, { useEffect, useState } from "react";
 import { Button, InputForm } from "../../components";
 // import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { apiRegister } from "../../services/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as actions from "../../store/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [isRegister, setIsRegister] = useState(location.state?.flag);
+  const [invalidFields, setInvalidFields] = useState([]);
+
   const [payLoad, setPayLoad] = useState({
     phone: "",
     password: "",
     name: "",
   });
 
+  const validate = (payLoad) => {
+    let invalids = 0;
+    let fields = Object.entries(payLoad);
+    fields.forEach((item) => {
+      if (item[1] === "") {
+        setInvalidFields((prev) => [
+          ...prev,
+          {
+            name: item[0],
+            message: "Bạn không được bỏ trống trường này.",
+          },
+        ]);
+        invalids++;
+      }
+    });
+    fields.forEach((item) => {
+      switch (item[0]) {
+        case "password":
+          if (item[1].length < 6) {
+            setInvalidFields((prev) => [
+              ...prev,
+              {
+                name: item[0],
+                message: "Mật khẩu phải có tối thiểu 6 kí tự",
+              },
+            ]);
+            invalids++;
+          }
+          break;
+        case "phone":
+          if (!+item[1]) {
+            setInvalidFields((prev) => [
+              ...prev,
+              {
+                name: item[0],
+                message: "Số điện thoại không hợp lệ.",
+              },
+            ]);
+            invalids++;
+          }
+          break;
+        default:
+          break;
+      }
+    });
+    return invalids;
+  };
+
+  const handleSubmit = async () => {
+    let finalPayload = isRegister
+      ? payLoad
+      : {
+          phone: payLoad.phone,
+          password: payLoad.password,
+        };
+    let invalids = validate(finalPayload);
+    if (invalids === 0) {
+      isRegister
+        ? dispatch(actions.register(payLoad))
+        : dispatch(actions.login(payLoad));
+    }
+  };
+
   useEffect(() => {
     setIsRegister(location.state?.flag);
   }, [location.state?.flag]);
-  const handleSubmit = async () => {
-    await dispatch(actions.register(payLoad));
-  };
-
+  useEffect(() => {
+    isLoggedIn && navigate("/");
+  }, [isLoggedIn]);
   return (
     <div className="bg-white w-[600px] p-[30px] pb-[100px] rounded-md shadow-sm">
       <h3 className="font-semibold text-2xl mb-3">
@@ -35,6 +100,8 @@ const Login = () => {
             value={payLoad.name}
             setValue={setPayLoad}
             type={"name"}
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
         )}
         <InputForm
@@ -42,12 +109,16 @@ const Login = () => {
           value={payLoad.phone}
           setValue={setPayLoad}
           type={"phone"}
+          invalidFields={invalidFields}
+          setInvalidFields={setInvalidFields}
         />
         <InputForm
           label={"MẬT KHẨU"}
           value={payLoad.password}
           setValue={setPayLoad}
           type={"password"}
+          invalidFields={invalidFields}
+          setInvalidFields={setInvalidFields}
         />
         <Button
           text={isRegister ? "Đăng ký" : "Đăng nhập"}
@@ -64,6 +135,11 @@ const Login = () => {
             <span
               onClick={() => {
                 setIsRegister(false);
+                setPayLoad({
+                  phone: "",
+                  password: "",
+                  name: "",
+                });
               }}
               className="text-blue-500 hover:underline cursor-pointer"
             >
@@ -78,6 +154,11 @@ const Login = () => {
             <small
               onClick={() => {
                 setIsRegister(true);
+                setPayLoad({
+                  phone: "",
+                  password: "",
+                  name: "",
+                });
               }}
               className="text-[blue] hover:text-[red] cursor-pointer"
             >
