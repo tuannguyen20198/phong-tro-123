@@ -12,7 +12,6 @@ const Login = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const [isRegister, setIsRegister] = useState(location.state?.flag);
   const [invalidFields, setInvalidFields] = useState([]);
-
   const [payLoad, setPayLoad] = useState({
     phone: "",
     password: "",
@@ -87,7 +86,7 @@ const Login = () => {
   }, [location.state?.flag]);
   useEffect(() => {
     isLoggedIn && navigate("/");
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
   return (
     <div className="bg-white w-[600px] p-[30px] pb-[100px] rounded-md shadow-sm">
       <h3 className="font-semibold text-2xl mb-3">
