@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { apiGetCategories } from "../../services/category";
+import { formatVietnameseToString } from "../../utils/constant";
 const nav = [
   { name: "Trang chủ", path: "home" },
   { name: "Cho thuê phòng trọ", path: "cho-thue-phong-tro" },
@@ -13,21 +14,38 @@ const notActive =
 const active =
   "hover:bg-secondary2 h-full flex justify-center items-center py-2 px-4 bg-secondary2";
 const Navigation = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await apiGetCategories();
+      if (response?.data.err === 0) {
+        setCategories(response.data.response);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
     <div className="w-screen flex justify-center items-center h-[40px] bg-secondary1 text-white">
-      <div className="w-1100 flex h-full items-center gap-3 text-sm font-medium">
-        {nav.length > 0 &&
-          nav.map((item, index) => {
+      <div className="w-1100 flex h-full items-center text-sm font-medium">
+        <NavLink
+          to={`/`}
+          className={({ isActive }) => (isActive ? active : notActive)}
+        >
+          Trang chủ
+        </NavLink>
+        {categories?.length > 0 &&
+          categories.map((item, index) => {
             return (
               <div
-                key={index}
+                key={item.code}
                 className="h-full flex justify-center items-center"
               >
                 <NavLink
-                  to={item.path}
+                  to={`${formatVietnameseToString(item.value)}`}
                   className={({ isActive }) => (isActive ? active : notActive)}
                 >
-                  {item.name}
+                  {item.value}
                 </NavLink>
               </div>
             );

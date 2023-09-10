@@ -3,10 +3,9 @@ import logo from "../../assets/logowithoutbg.png";
 import { Button } from "../../components";
 import icons from "../../utils/icons";
 import { Link, useNavigate } from "react-router-dom";
-import path from "../../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
-import actionTypes from "../../store/action/actionTypes";
 import * as action from "../../store/action/auth";
+import { path } from "../../utils/constant";
 const { AiOutlinePlusCircle } = icons;
 
 const Header = () => {
