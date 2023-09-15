@@ -1,5 +1,6 @@
 import React from "react";
-import { Button } from "../../components";
+import { Button, Item } from "../../components";
+
 const List = () => {
   return (
     <div className="w-full p-2 bg-white shadow-md rounded-md">
@@ -12,7 +13,9 @@ const List = () => {
         <Button bgColor="bg-gray-200" text="Măt định" />
         <Button bgColor="bg-gray-200" text="Mới nhất" />
       </div>
-      <div className="items">Items</div>
+      <div className="items">
+        <Item />
+      </div>
     </div>
   );
 };
