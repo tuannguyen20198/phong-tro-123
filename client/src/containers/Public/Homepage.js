@@ -12,7 +12,7 @@ const Homepage = () => {
         <p className="text-base text-gray-700">{text.HOME_DESCRIPTION}</p>
       </div>
       <Province />
-      <div className="w-full flex justify-center items-center gap-4">
+      <div className="w-full flex justify-center items-start gap-4">
         <div className="w-[70%]">
           <List />
         </div>
