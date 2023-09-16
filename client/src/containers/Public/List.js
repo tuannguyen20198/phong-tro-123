@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
-import { Button, Item } from "../../components";
-import { getPosts } from "../../store/action/post";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import {Button, Item} from "../../components";
+import {getPosts, getPostsLimit} from "../../store/action/post";
+import {useDispatch, useSelector} from "react-redux";
+import {Pagination} from "./index";
 const List = () => {
-  const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.post);
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
-  console.log(posts);
+  const {posts, count} = useSelector((state) => state.post);
   return (
     <div className="w-full p-2 bg-white shadow-md rounded-md px-6">
       <div className="flex items-center justify-between my-3">

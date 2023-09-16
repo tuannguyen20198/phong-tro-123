@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {
   Home,
   Login,
@@ -8,7 +8,7 @@ import {
   RentalSpace,
   Homepage,
 } from "./containers/Public";
-import { path } from "./utils/constant";
+import {path} from "./utils/constant";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path={path.HOME} element={<Home />}>
           <Route path="*" element={<Homepage />} />
+          <Route path={path.HOME__PAGE} element={<Homepage />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.CHO_THUE_CAN_HO} element={<RentalApartment />} />
           <Route path={path.CHO_THUE_MAT_BANG} element={<RentalHouse />} />
