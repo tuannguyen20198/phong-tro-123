@@ -3,7 +3,7 @@ import { GrNext, GrStar } from "react-icons/gr";
 import { BsChevronRight, BsBookmarkStarFill } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { TbReportMoney } from "react-icons/tb";
-import { RiCrop2Line, RiHeartsFill, RiHeartLine } from "react-icons/ri";
+import { RiCrop2Line, RiHeartFill, RiHeartLine } from "react-icons/ri";
 import { MdOutlineHouseSiding } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 
@@ -17,7 +17,7 @@ const icons = {
   MdOutlineHouseSiding,
   FiSearch,
   GrStar,
-  RiHeartsFill,
+  RiHeartFill,
   RiHeartLine,
   BsBookmarkStarFill,
 };

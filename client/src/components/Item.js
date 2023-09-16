@@ -1,6 +1,6 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import icons from "../utils/icons";
-const { GrStar, RiHeartsFill, RiHeartLine, BsBookmarkStarFill } = icons;
+const { GrStar, RiHeartFill, RiHeartLine, BsBookmarkStarFill } = icons;
 
 const images = [
   "https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2023/08/30/e1ff0d06dbad09f350bc_1693359997.jpg",
@@ -10,9 +10,12 @@ const images = [
 ];
 
 const Item = () => {
+  const [isHoverHeart, setIsHoverHeart] = useState(false);
+  console.log(isHoverHeart);
+
   return (
     <div className="w-full flex items-start">
-      <div className="w-2/5 flex flex-wrap gap-[2px] items-center">
+      <div className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
         <img
           src={images[0]}
           alt="preview"
@@ -33,6 +36,20 @@ const Item = () => {
           alt="preview"
           className="w-[140px] h-[120px] object-cover"
         />
+        <span className="bg-overlay-70 text-white px-2 rounded-md absolute bottom-1 left-1">
+          4 ảnh
+        </span>
+        <span
+          className="text-white absolute bottom-1 right-8"
+          onMouseEnter={() => setIsHoverHeart(true)}
+          onMouseLeave={() => setIsHoverHeart(false)}
+        >
+          {isHoverHeart ? (
+            <RiHeartFill size={26} color="red" />
+          ) : (
+            <RiHeartLine size={26} />
+          )}
+        </span>
       </div>
       {/* <div className="flex gap-"></div> */}
       <div className="w-3/5">
@@ -79,7 +96,7 @@ const Item = () => {
               type="button"
               className="border border-blue-500 p-2 rounded-md text-blue-500"
             >
-              Gọi 4465465464
+              Nhắn Zalo
             </button>
           </div>
         </div>

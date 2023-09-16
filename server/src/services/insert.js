@@ -1,9 +1,9 @@
 import db from "../models";
 import bcrypt from "bcryptjs";
 import { v4 } from "uuid";
-import nhachothue from "../../data/nhachothue.json";
+import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
-const dataBody = nhachothue.body;
+const dataBody = chothuephongtro.body;
 require("dotenv").config();
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
@@ -24,7 +24,7 @@ export const insertService = () =>
           labelCode,
           address: item.header?.address,
           attributesId,
-          categoryCode: "NCT",
+          categoryCode: "CTPT",
           description: JSON.stringify(item?.mainContent?.content),
           userId,
           overviewId,

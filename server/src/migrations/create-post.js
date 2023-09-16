@@ -36,7 +36,7 @@ module.exports = {
       overviewId: {
         type: Sequelize.STRING,
       },
-      imagesID: {
+      imagesId: {
         type: Sequelize.STRING,
       },
       createdAt: {
