@@ -23,7 +23,6 @@ const Item = ({
     for (let i = 1; i < +star; i++) stars.push(<GrStar className="star-item"size={18} color="yellow" />)
     return stars
   }
-  console.log(handleStar(5))
   return (
     <div className="w-full flex items-start py-4">
       <Link to={`chi-tiet/${formatVietnameseToString(title)}/${id}}`} className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">

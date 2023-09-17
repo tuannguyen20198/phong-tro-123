@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { apiGetCategories } from "../../services/category";
 import { formatVietnameseToString } from "../../utils/Common/formatVietnameseToString";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../../store/action"
 
 const nav = [
   { name: "Trang chủ", path: "home" },
@@ -15,15 +16,11 @@ const notActive =
 const active =
   "hover:bg-secondary2 h-full flex justify-center items-center py-2 px-4 bg-secondary2";
 const Navigation = () => {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]) 
+  const {categories} = useSelector(state => state.app)
+  const dispatch = useDispatch()
   useEffect(() => {
-    const fetchCategories = async () => {
-      const response = await apiGetCategories();
-      if (response?.data.err === 0) {
-        setCategories(response.data.response);
-      }
-    };
-    fetchCategories();
+    dispatch(actions.getCategories());
   }, []);
 
   return (
