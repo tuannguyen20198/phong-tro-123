@@ -6,13 +6,10 @@ import {Pagination} from "./index";
 const List = ({page}) => {
   const {posts} = useSelector((state) => state.post);
     const dispatch = useDispatch();
-    const listRef = useRef()
     useEffect(() => {
       let offset = page ? + page - 1 : 0
-    dispatch(getPostsLimit(offset));
-
+      dispatch(getPostsLimit(offset));
   }, [page]);
-  console.log(page)
   return (
     <div  className="w-full p-2 bg-white shadow-md rounded-md px-6">
       <div className="flex items-center justify-between my-3">
@@ -37,6 +34,7 @@ const List = ({page}) => {
                 star={+item?.star}
                 title={item?.title}
                 user={item?.user}
+                id={item?.id}
               />
             );
           })}

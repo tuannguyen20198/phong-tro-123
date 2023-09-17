@@ -14,12 +14,12 @@ const Header = () => {
   const dispatch = useDispatch();
   const headerRef = useRef()
   const { isLoggedIn } = useSelector((state) => state.auth);
+  useEffect(() => {
+    headerRef.current.scrollIntoView({behavior:'smooth',block:'start'})
+  },[searchParams.get("page")])
   const goLogin = useCallback((flag) => {
     navigate(path.LOGIN, { state: { flag } });
   }, []);
-  useEffect(() => {
-    headerRef.current.scrollIntoView({behavior:'smooth',block:'start'})
-  },[searchParams.get('page')])
   return (
     <div ref={headerRef} className="w-3/5">
       <div className="w-full flex items-center justify-between">
