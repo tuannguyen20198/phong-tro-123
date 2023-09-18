@@ -1,9 +1,12 @@
 import db from "../models";
 import bcrypt from "bcryptjs";
-import { v4 } from "uuid";
+import {v4} from "uuid";
 import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
+import {dataPrice, dataArea} from "../utils/data";
+import {getNumberFromString} from "../utils/common";
 const dataBody = chothuephongtro.body;
+
 require("dotenv").config();
 const hashPassword = (password) =>
   bcrypt.hashSync(password, bcrypt.genSaltSync(12));
@@ -17,6 +20,8 @@ export const insertService = () =>
         let userId = v4();
         let imagesId = v4();
         let overviewId = v4();
+        let currenArea = getNumberFromString(item?.header?.attributes?.acreage);
+        let currenPrice = getNumberFromString(item?.header?.attributes?.price);
         await db.Post.create({
           id: postId,
           title: item.header?.title,
@@ -29,6 +34,12 @@ export const insertService = () =>
           userId,
           overviewId,
           imagesId,
+          areaCode: dataArea.find(
+            (area) => area.max >= currenArea && area.min <= currenArea
+          )?.code,
+          priceCode: dataPrice.find(
+            (price) => price.max >= currenPrice && price.min <= currenPrice
+          )?.code,
         });
         await db.Attribute.create({
           id: attributesId,
@@ -42,7 +53,7 @@ export const insertService = () =>
           image: JSON.stringify(item?.images),
         });
         await db.Label.findOrCreate({
-          where: { code: labelCode },
+          where: {code: labelCode},
           defaults: {
             code: labelCode,
             value: item?.header?.class?.classType,
