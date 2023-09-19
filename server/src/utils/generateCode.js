@@ -17,6 +17,6 @@ const generateCode = (value) => {
     output += merge.charAt(index);
     length = index;
   }
-  return `${value.charAt(0)}${output}`.toUpperCase(); //M
+  return `${value.charAt(2)}${output}`.toUpperCase(); //M
 };
 export default generateCode;

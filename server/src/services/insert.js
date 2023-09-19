@@ -1,7 +1,10 @@
 import db from "../models";
 import bcrypt from "bcryptjs";
 import {v4} from "uuid";
+// import chothuephongtro from "../../data/chothuephongtro.json";
+// import nhachothue from "../../data/nhachothue.json";
 import chothuephongtro from "../../data/chothuephongtro.json";
+// import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
 import {dataPrice, dataArea} from "../utils/data";
 import {getNumberFromString} from "../utils/common";
@@ -89,6 +92,28 @@ export const insertService = () =>
         });
       });
       resolve("Done.");
+    } catch (error) {
+      reject(error);
+    }
+  });
+export const createPricesAndArea = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      dataPrice.forEach(async (item, index) => {
+        await db.Price.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      dataArea.forEach(async (item, index) => {
+        await db.Area.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      resolve("OK");
     } catch (error) {
       reject(error);
     }
