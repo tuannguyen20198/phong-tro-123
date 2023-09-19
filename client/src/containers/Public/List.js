@@ -1,17 +1,30 @@
-import React, {useEffect,useRef} from "react";
+import React, {useEffect} from "react";
 import {Button, Item} from "../../components";
-import {getPosts, getPostsLimit} from "../../store/action/post";
+import {getPostsLimit} from "../../store/action/post";
 import {useDispatch, useSelector} from "react-redux";
-import {Pagination} from "./index";
+import {useSearchParams} from "react-router-dom";
+
 const List = ({page}) => {
   const {posts} = useSelector((state) => state.post);
-    const dispatch = useDispatch();
-    useEffect(() => {
-      let offset = page ? + page - 1 : 0
-      dispatch(getPostsLimit(offset));
-  }, [page]);
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let params = [];
+    for (let entry of searchParams.entries()) {
+      params.push(entry);
+    }
+    console.log(params);
+    let searchParamsObject = {};
+    params?.map((i) => {
+      searchParamsObject = {
+        ...searchParamsObject,
+        [i[0]]: i[1],
+      };
+    });
+    dispatch(getPostsLimit(searchParamsObject));
+  }, [searchParams]);
   return (
-    <div  className="w-full p-2 bg-white shadow-md rounded-md px-6">
+    <div className="w-full p-2 bg-white shadow-md rounded-md px-6">
       <div className="flex items-center justify-between my-3">
         <h4 className="text-xl font-semibold">Danh sách tin đăng</h4>
         <span>Cập nhật: 12:05 25/08/2022</span>

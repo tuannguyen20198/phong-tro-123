@@ -5,7 +5,6 @@ import * as apis from "../../services";
 export const getCategories = () => async (dispatch) => {
   try {
     const response = await apis.apiGetCategories();
-    console.log(response);
     if (response?.data.err === 0) {
       dispatch({
         type: actionTypes.GET_CATEGORIES,
@@ -28,7 +27,6 @@ export const getCategories = () => async (dispatch) => {
 export const getPrices = () => async (dispatch) => {
   try {
     const response = await apis.apiGetPrices();
-    console.log(response);
     if (response?.data.err === 0) {
       dispatch({
         type: actionTypes.GET_PRICES,
@@ -53,7 +51,6 @@ export const getPrices = () => async (dispatch) => {
 export const getAreas = () => async (dispatch) => {
   try {
     const response = await apis.apiGetAreas();
-    console.log(response);
     if (response?.data.err === 0) {
       dispatch({
         type: actionTypes.GET_AREAS,

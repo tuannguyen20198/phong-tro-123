@@ -3,12 +3,12 @@ import bcrypt from "bcryptjs";
 import {v4} from "uuid";
 // import chothuephongtro from "../../data/chothuephongtro.json";
 // import nhachothue from "../../data/nhachothue.json";
-import chothuephongtro from "../../data/chothuephongtro.json";
+import chothuematbang from "../../data/chothuecanho.json";
 // import chothuephongtro from "../../data/chothuephongtro.json";
 import generateCode from "../utils/generateCode";
 import {dataPrice, dataArea} from "../utils/data";
 import {getNumberFromString} from "../utils/common";
-const dataBody = chothuephongtro.body;
+const dataBody = chothuematbang.body;
 
 require("dotenv").config();
 const hashPassword = (password) =>
@@ -32,7 +32,7 @@ export const insertService = () =>
           labelCode,
           address: item.header?.address,
           attributesId,
-          categoryCode: "CTPT",
+          categoryCode: "CTMB",
           description: JSON.stringify(item?.mainContent?.content),
           userId,
           overviewId,
