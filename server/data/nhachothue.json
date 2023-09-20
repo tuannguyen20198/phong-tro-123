@@ -45,21 +45,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#633255" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Bình Định" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin VIP 3" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 10:21 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 5, 10:21 07/09/2023" }
+          {"name": "Mã tin:", "content": "#633255"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Bình Định"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin VIP 3"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 10:21 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 5, 10:21 07/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Chính chủ" },
-          { "name": "Điện thoại:", "content": "0909924978" },
-          { "name": "Zalo", "content": "0909924978" }
+          {"name": "Liên hệ:", "content": "Chính chủ"},
+          {"name": "Điện thoại:", "content": "0909924978"},
+          {"name": "Zalo", "content": "0909924978"}
         ]
       }
     },
@@ -109,21 +109,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#629410" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin VIP 3" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 14:19 10/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 4, 09:15 01/11/2023" }
+          {"name": "Mã tin:", "content": "#629410"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin VIP 3"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 14:19 10/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 4, 09:15 01/11/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Huynh Thanh Duc" },
-          { "name": "Điện thoại:", "content": "0946300900" },
-          { "name": "Zalo", "content": "0946300900" }
+          {"name": "Liên hệ:", "content": "Huynh Thanh Duc"},
+          {"name": "Điện thoại:", "content": "0946300900"},
+          {"name": "Zalo", "content": "0946300900"}
         ]
       }
     },
@@ -171,21 +171,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#271580" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 6, 11:42 01/09/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 4, 11:42 06/09/2023" }
+          {"name": "Mã tin:", "content": "#271580"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 6, 11:42 01/09/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 4, 11:42 06/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Long Richome" },
-          { "name": "Điện thoại:", "content": "0766802468" },
-          { "name": "Zalo", "content": "0766802468" }
+          {"name": "Liên hệ:", "content": "Long Richome"},
+          {"name": "Điện thoại:", "content": "0766802468"},
+          {"name": "Zalo", "content": "0766802468"}
         ]
       }
     },
@@ -233,21 +233,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634375" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin miễn phí" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 20:23 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 3, 20:23 05/09/2023" }
+          {"name": "Mã tin:", "content": "#634375"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin miễn phí"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 20:23 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 3, 20:23 05/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Đỗ Gia Phú" },
-          { "name": "Điện thoại:", "content": "0939849303" },
-          { "name": "Zalo", "content": "0939849303" }
+          {"name": "Liên hệ:", "content": "Đỗ Gia Phú"},
+          {"name": "Điện thoại:", "content": "0939849303"},
+          {"name": "Zalo", "content": "0939849303"}
         ]
       }
     },
@@ -289,21 +289,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634367" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 17:58 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 5, 17:58 21/09/2023" }
+          {"name": "Mã tin:", "content": "#634367"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 17:58 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 5, 17:58 21/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Trần Thị Hồng Nhung" },
-          { "name": "Điện thoại:", "content": "0934862365" },
-          { "name": "Zalo", "content": "0934862365" }
+          {"name": "Liên hệ:", "content": "Trần Thị Hồng Nhung"},
+          {"name": "Điện thoại:", "content": "0934862365"},
+          {"name": "Zalo", "content": "0934862365"}
         ]
       }
     },
@@ -335,21 +335,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634352" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hà Nội" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 16:17 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 3, 16:17 05/09/2023" }
+          {"name": "Mã tin:", "content": "#634352"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hà Nội"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 16:17 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 3, 16:17 05/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "đoàn quang thọ" },
-          { "name": "Điện thoại:", "content": "0916068836" },
-          { "name": "Zalo", "content": "0916068836" }
+          {"name": "Liên hệ:", "content": "đoàn quang thọ"},
+          {"name": "Điện thoại:", "content": "0916068836"},
+          {"name": "Zalo", "content": "0916068836"}
         ]
       }
     },
@@ -371,7 +371,7 @@
         },
         "address": "Địa chỉ: 312 Đường Nguyễn Thái Bình, Phường 4, Quận Tân Bình, Hồ Chí Minh",
         "attributes": {
-          "price": "22 triệu/tháng",
+          "price": "700.000 đồng/tháng",
           "acreage": "42m2",
           "published": "1 ngày trước",
           "hashtag": "632837"
@@ -399,21 +399,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#632837" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 14:26 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 3, 14:26 05/09/2023" }
+          {"name": "Mã tin:", "content": "#632837"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 14:26 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 3, 14:26 05/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Trúc Giang" },
-          { "name": "Điện thoại:", "content": "0776272744" },
-          { "name": "Zalo", "content": "0776272744" }
+          {"name": "Liên hệ:", "content": "Trúc Giang"},
+          {"name": "Điện thoại:", "content": "0776272744"},
+          {"name": "Zalo", "content": "0776272744"}
         ]
       }
     },
@@ -435,7 +435,7 @@
         },
         "address": "Địa chỉ: Đường số 51, Phường Hiệp Bình Chánh, Quận Thủ Đức, Hồ Chí Minh",
         "attributes": {
-          "price": "10 triệu/tháng",
+          "price": "700.000 đồng/tháng",
           "acreage": "33m2",
           "published": "2 ngày trước",
           "hashtag": "634333"
@@ -458,21 +458,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634333" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 10:05 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 5, 10:05 07/09/2023" }
+          {"name": "Mã tin:", "content": "#634333"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 10:05 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 5, 10:05 07/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -519,21 +519,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634330" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 5, 09:55 31/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 6, 09:55 08/09/2023" }
+          {"name": "Mã tin:", "content": "#634330"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 5, 09:55 31/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 6, 09:55 08/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -580,21 +580,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634285" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 10:51 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 2, 10:51 04/09/2023" }
+          {"name": "Mã tin:", "content": "#634285"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 10:51 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 2, 10:51 04/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Thủy Tiên" },
-          { "name": "Điện thoại:", "content": "0947043751" },
-          { "name": "Zalo", "content": "0947043751" }
+          {"name": "Liên hệ:", "content": "Thủy Tiên"},
+          {"name": "Điện thoại:", "content": "0947043751"},
+          {"name": "Zalo", "content": "0947043751"}
         ]
       }
     },
@@ -626,21 +626,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#593060" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 10:10 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 2, 10:10 04/09/2023" }
+          {"name": "Mã tin:", "content": "#593060"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 10:10 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 2, 10:10 04/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "thuymong70" },
-          { "name": "Điện thoại:", "content": "0907031063" },
-          { "name": "Zalo", "content": "0907031063" }
+          {"name": "Liên hệ:", "content": "thuymong70"},
+          {"name": "Điện thoại:", "content": "0907031063"},
+          {"name": "Zalo", "content": "0907031063"}
         ]
       }
     },
@@ -691,21 +691,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634275" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 08:47 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 4, 08:47 06/09/2023" }
+          {"name": "Mã tin:", "content": "#634275"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 08:47 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 4, 08:47 06/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -752,21 +752,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634272" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 08:29 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 7, 08:29 09/09/2023" }
+          {"name": "Mã tin:", "content": "#634272"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 08:29 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 7, 08:29 09/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -811,21 +811,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634270" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 4, 08:19 30/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 4, 08:19 06/09/2023" }
+          {"name": "Mã tin:", "content": "#634270"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 4, 08:19 30/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 4, 08:19 06/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -868,21 +868,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634249" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 3, 20:58 29/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 3, 20:58 05/09/2023" }
+          {"name": "Mã tin:", "content": "#634249"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 3, 20:58 29/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 3, 20:58 05/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Hoàng Sinh" },
-          { "name": "Điện thoại:", "content": "0904553939" },
-          { "name": "Zalo", "content": "0904553939" }
+          {"name": "Liên hệ:", "content": "Hoàng Sinh"},
+          {"name": "Điện thoại:", "content": "0904553939"},
+          {"name": "Zalo", "content": "0904553939"}
         ]
       }
     },
@@ -920,21 +920,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#633525" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 3, 17:16 29/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Chủ Nhật, 17:16 03/09/2023" }
+          {"name": "Mã tin:", "content": "#633525"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 3, 17:16 29/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Chủ Nhật, 17:16 03/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Thu Tien Nguyen Thi" },
-          { "name": "Điện thoại:", "content": "0774872068" },
-          { "name": "Zalo", "content": "0774872068" }
+          {"name": "Liên hệ:", "content": "Thu Tien Nguyen Thi"},
+          {"name": "Điện thoại:", "content": "0774872068"},
+          {"name": "Zalo", "content": "0774872068"}
         ]
       }
     },
@@ -972,21 +972,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634197" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Khánh Hòa" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin miễn phí" },
-          { "name": "Ngày đăng:", "content": "Thứ 3, 11:20 29/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Chủ Nhật, 11:20 03/09/2023" }
+          {"name": "Mã tin:", "content": "#634197"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Khánh Hòa"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin miễn phí"},
+          {"name": "Ngày đăng:", "content": "Thứ 3, 11:20 29/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Chủ Nhật, 11:20 03/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Nguyễn Thọ" },
-          { "name": "Điện thoại:", "content": "0905399870" },
-          { "name": "Zalo", "content": "0905399870" }
+          {"name": "Liên hệ:", "content": "Nguyễn Thọ"},
+          {"name": "Điện thoại:", "content": "0905399870"},
+          {"name": "Zalo", "content": "0905399870"}
         ]
       }
     },
@@ -1042,21 +1042,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634155" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hà Nội" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin miễn phí" },
-          { "name": "Ngày đăng:", "content": "Thứ 2, 17:46 28/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 7, 17:46 02/09/2023" }
+          {"name": "Mã tin:", "content": "#634155"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hà Nội"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin miễn phí"},
+          {"name": "Ngày đăng:", "content": "Thứ 2, 17:46 28/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 7, 17:46 02/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "nguyễn hoàng hà" },
-          { "name": "Điện thoại:", "content": "0818806596" },
-          { "name": "Zalo", "content": "0818806596" }
+          {"name": "Liên hệ:", "content": "nguyễn hoàng hà"},
+          {"name": "Điện thoại:", "content": "0818806596"},
+          {"name": "Zalo", "content": "0818806596"}
         ]
       }
     },
@@ -1107,21 +1107,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#634127" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 2, 15:33 28/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 7, 15:33 02/09/2023" }
+          {"name": "Mã tin:", "content": "#634127"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 2, 15:33 28/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 7, 15:33 02/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Bùi Quang Hải" },
-          { "name": "Điện thoại:", "content": "0932000677" },
-          { "name": "Zalo", "content": "0932000677" }
+          {"name": "Liên hệ:", "content": "Bùi Quang Hải"},
+          {"name": "Điện thoại:", "content": "0932000677"},
+          {"name": "Zalo", "content": "0932000677"}
         ]
       }
     },
@@ -1178,21 +1178,21 @@
       "overview": {
         "header": "Đặc điểm tin đăng",
         "content": [
-          { "name": "Mã tin:", "content": "#296290" },
-          { "name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh" },
-          { "name": "Loại tin rao:", "content": "Nhà thuê nguyên căn" },
-          { "name": "Đối tượng thuê:", "content": "Tất cả" },
-          { "name": "Gói tin:", "content": "Tin thường" },
-          { "name": "Ngày đăng:", "content": "Thứ 2, 01:06 28/08/2023" },
-          { "name": "Ngày hết hạn:", "content": "Thứ 2, 01:05 04/09/2023" }
+          {"name": "Mã tin:", "content": "#296290"},
+          {"name": "Khu vực", "content": "Cho thuê nhà Hồ Chí Minh"},
+          {"name": "Loại tin rao:", "content": "Nhà thuê nguyên căn"},
+          {"name": "Đối tượng thuê:", "content": "Tất cả"},
+          {"name": "Gói tin:", "content": "Tin thường"},
+          {"name": "Ngày đăng:", "content": "Thứ 2, 01:06 28/08/2023"},
+          {"name": "Ngày hết hạn:", "content": "Thứ 2, 01:05 04/09/2023"}
         ]
       },
       "contact": {
         "header": "Thông tin liên hệ",
         "content": [
-          { "name": "Liên hệ:", "content": "Mr.Luan" },
-          { "name": "Điện thoại:", "content": "0586999968" },
-          { "name": "Zalo", "content": "0586999968" }
+          {"name": "Liên hệ:", "content": "Mr.Luan"},
+          {"name": "Điện thoại:", "content": "0586999968"},
+          {"name": "Zalo", "content": "0586999968"}
         ]
       }
     }

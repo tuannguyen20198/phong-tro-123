@@ -8,7 +8,6 @@ import {useDispatch, useSelector} from "react-redux";
 import * as actions from "../../store/action/";
 
 const Homepage = () => {
-  const [params] = useSearchParams();
   const dispatch = useDispatch();
   const {categories, prices, areas} = useSelector((state) => state.app);
   useEffect(() => {
@@ -26,7 +25,7 @@ const Homepage = () => {
       <div className="w-full flex gap-4">
         <div className="w-[70%]">
           <List />
-          <Pagination page={params.get("page")} />
+          <Pagination />
           <div className="h-[500px]"></div>
         </div>
         <div className="w-[30%] border border-green-500 flex flex-col gap-4 justify-start items-center">
@@ -40,6 +39,7 @@ const Homepage = () => {
           <ItemSidebar
             isDouble={true}
             content={areas}
+            type="areaCode"
             title="Xem theo diện tích"
           />
         </div>

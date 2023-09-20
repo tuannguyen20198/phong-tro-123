@@ -4,7 +4,8 @@ import cors from "cors";
 const app = express();
 import initRoutes from "./src/routes";
 import connectDatabase from "./src/config/connectDatabase";
-
+import {getNumberFromString} from "./src/utils/common";
+console.log(getNumberFromString("1.7 triệu/tháng"));
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
