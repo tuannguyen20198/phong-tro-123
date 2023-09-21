@@ -3,8 +3,8 @@ import bcrypt from "bcryptjs";
 import {v4} from "uuid";
 import chothuephongtro from "../../data/chothuephongtro.json";
 // import nhachothue from "../../data/nhachothue.json";
-// import chothuematbang from "../../data/chothuecanho.json";
 // import chothuecanho from "../../data/chothuecanho.json";
+// import chothuematbang from "../../data/chothuematbang.json";
 import generateCode from "../utils/generateCode";
 import {dataPrice, dataArea} from "../utils/data";
 import {getNumberFromString} from "../utils/common";
@@ -38,10 +38,10 @@ export const insertService = () =>
           overviewId,
           imagesId,
           areaCode: dataArea.find(
-            (area) => area.max >= currenArea && area.min <= currenArea
+            (area) => area.max > currenArea && area.min <= currenArea
           )?.code,
           priceCode: dataPrice.find(
-            (price) => price.max >= currenPrice && price.min <= currenPrice
+            (price) => price.max > currenPrice && price.min <= currenPrice
           )?.code,
         });
         await db.Attribute.create({
