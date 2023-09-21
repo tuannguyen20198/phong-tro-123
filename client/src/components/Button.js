@@ -1,10 +1,20 @@
-import React, { memo } from "react";
-const Button = ({ text, textColor, bgColor, IcAfter, onClick, fullWidth }) => {
+import React, {memo} from "react";
+const Button = ({
+  text,
+  textColor,
+  bgColor,
+  IcAfter,
+  onClick,
+  fullWidth,
+  px,
+}) => {
   return (
     <div>
       <button
         type="button"
-        className={`p-2 ${textColor} ${bgColor} outline-none rounded-md hover:underline flex items-center justify-center gap-1 ${fullWidth &&
+        className={`py-2 ${
+          px ? px : "px-2"
+        } ${textColor} ${bgColor} outline-none rounded-md hover:underline flex items-center justify-center gap-1 ${fullWidth &&
           "w-full"}`}
         onClick={onClick}
       >
