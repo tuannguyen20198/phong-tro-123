@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
 
 import {text} from "../../utils/constant";
-import {Province, ItemSidebar} from "../../components";
+import {Province, ItemSidebar, RelatedPost} from "../../components";
 import {List, Pagination} from "./index";
-import {useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import * as actions from "../../store/action/";
 
@@ -42,6 +41,7 @@ const Homepage = () => {
             type="areaCode"
             title="Xem theo diện tích"
           />
+          <RelatedPost />
         </div>
       </div>
     </div>
