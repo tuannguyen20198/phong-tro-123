@@ -5,7 +5,6 @@ const Sitem = ({title, price, image, createdAt}) => {
   const formatTime = () => {
     return moment().fromNow();
   };
-  console.log(formatTime());
   return (
     <div className="w-full flex items-center gap-2 py-2 border-b border-gray-300">
       <img

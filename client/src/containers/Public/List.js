@@ -13,7 +13,6 @@ const List = ({page}) => {
     for (let entry of searchParams.entries()) {
       params.push(entry);
     }
-    console.log(params);
     let searchParamsObject = {};
     params?.map((i) => {
       searchParamsObject = {

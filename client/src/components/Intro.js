@@ -9,7 +9,6 @@ const {GrStar} = icons;
 const star = [1, 2, 3, 4, 5];
 const Intro = () => {
   const {categories} = useSelector((state) => state.app);
-  console.log(categories);
   return (
     <div className="w-3/5 bg-white rounded-md shadow-md p-4 gap-4 flex flex-col justify-center items-center">
       <h3 className="font-semibold text-lg">{text.title}</h3>
