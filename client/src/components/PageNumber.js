@@ -4,12 +4,14 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 const noActive =
   "w-[46px] h-[48px] flex justify-center items-center bg-white hover:bg-gray-300 rounded-md";
 const active =
   "w-[46px] h-[48px] flex justify-center items-center bg-[#E13427] text-white rounded-md";
 const PageNumber = ({text, currenPage, icon, setCurrentPage, type}) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [paramsSearch] = useSearchParams();
   let entries = paramsSearch.entries();
   const append = (entries) => {
@@ -29,7 +31,7 @@ const PageNumber = ({text, currenPage, icon, setCurrentPage, type}) => {
     if (!(text === "...")) {
       setCurrentPage(+text);
       navigate({
-        pathname: "/",
+        pathname: location.pathname,
         search: createSearchParams(append(entries)).toString(),
       });
     }
