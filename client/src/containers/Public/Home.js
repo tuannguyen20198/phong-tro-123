@@ -5,11 +5,13 @@ import {Navigation, Search} from "./index";
 import {Intro, Contact} from "../../components";
 import * as actions from "../../store/action/";
 import {useDispatch} from "react-redux";
+
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.getPrices());
     dispatch(actions.getAreas());
+    dispatch(actions.getProvinces());
   }, []);
   return (
     <div className="w-full flex gap-6 flex-col items-center h-full border border-red-500">

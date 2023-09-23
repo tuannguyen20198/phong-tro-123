@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 
 const List = ({categoryCode}) => {
-  console.log(categoryCode);
   const {posts} = useSelector((state) => state.post);
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
