@@ -14,7 +14,7 @@ const Home = () => {
     dispatch(actions.getProvinces());
   }, []);
   return (
-    <div className="w-full flex gap-6 flex-col items-center h-full border border-red-500">
+    <div className="w-full flex gap-6 flex-col items-center h-full">
       <Header />
       <Navigation />
       <Search />

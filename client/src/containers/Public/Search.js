@@ -42,7 +42,7 @@ const Search = () => {
         </span>
         <span
           className="flex-1 cursor-pointer"
-          onClick={() => handleShowModal(provinces, "provinces")}
+          onClick={() => handleShowModal(provinces, "province")}
         >
           <SearchItem
             IconBefore={<HiOutlineLocationMarker />}
@@ -50,7 +50,7 @@ const Search = () => {
             text="Toàn quốc"
           />
         </span>
-        <span onClick={() => handleShowModal(prices, "prices")}>
+        <span onClick={() => handleShowModal(prices, "price")}>
           <SearchItem
             IconBefore={<TbReportMoney />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
@@ -59,7 +59,7 @@ const Search = () => {
         </span>
         <span
           className="flex-1 cursor-pointer"
-          onClick={() => handleShowModal(areas, "areas")}
+          onClick={() => handleShowModal(areas, "area")}
         >
           <SearchItem
             IconBefore={<RiCrop2Line />}
