@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {SearchItem, Modal} from "../../components";
 import icons from "../../utils/icons";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {useSelector} from "react-redux";
+import { getCodePrice,getCodeArea } from "../../utils/Common/getCodes";
+
 const {
   BsChevronRight,
   MdOutlineHouseSiding,
@@ -15,17 +17,27 @@ const Search = () => {
   const [isShowodal, setIsShowodal] = useState(false);
   const [content, setContent] = useState([]);
   const [name, setName] = useState("");
-
+  const [queries, setQueries] = useState({});
+  
   const {provinces, areas, prices, categories} = useSelector(
     (state) => state.app
   );
+  
+  console.log(getCodePrice(prices))
+  console.log(getCodeArea(areas))
 
   const handleShowModal = (content, name) => {
     setContent(content);
     setName(name);
     setIsShowodal(true);
   };
-
+  const handleSubmit = useCallback((e,query)=>{
+    e.stopPropagation();
+    setQueries(prev =>({...prev, ...query }))
+    setIsShowodal(false)
+    
+  },[isShowodal,queries])
+  console.log(isShowodal)
   return (
     <>
       <div className="p-[10px] w-3/5 my-3 bg-[#febb02] rounded-lg flex-col lg:flex-row flex items-center justify-around gap-2">
@@ -37,7 +49,8 @@ const Search = () => {
             fontWeight
             IconBefore={<MdOutlineHouseSiding />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
-            text="Phòng trọ, nhà trọ"
+            text={queries.category}
+            defaultText ={"Phòng trọ, nhà trọ"}
           />
         </span>
         <span
@@ -47,14 +60,14 @@ const Search = () => {
           <SearchItem
             IconBefore={<HiOutlineLocationMarker />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
-            text="Toàn quốc"
+            text={queries.province} defaultText ={"Toàn quốc"}
           />
         </span>
         <span onClick={() => handleShowModal(prices, "price")}>
           <SearchItem
             IconBefore={<TbReportMoney />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
-            text="Chọn giá"
+            text={queries.price} defaultText ={"Chọn giá"}
           />
         </span>
         <span
@@ -64,7 +77,7 @@ const Search = () => {
           <SearchItem
             IconBefore={<RiCrop2Line />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
-            text="Chọn diện tích"
+            text={queries.area} defaultText ={"Chọn khu vực"}
           />
         </span>
         <button
@@ -76,7 +89,7 @@ const Search = () => {
         </button>
       </div>
       {isShowodal && (
-        <Modal content={content} name={name} setIsShowodal={setIsShowodal} />
+        <Modal handleSubmit={handleSubmit} queries={queries} content={content} name={name} setIsShowodal={setIsShowodal} />
       )}
     </>
   );
