@@ -3,7 +3,7 @@ import {SearchItem, Modal} from "../../components";
 import icons from "../../utils/icons";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {useSelector} from "react-redux";
-import { getCodePrice,getCodeArea } from "../../utils/Common/getCodes";
+import { getCodes } from "../../utils/Common/getCodes";
 
 const {
   BsChevronRight,
@@ -17,15 +17,12 @@ const Search = () => {
   const [isShowodal, setIsShowodal] = useState(false);
   const [content, setContent] = useState([]);
   const [name, setName] = useState("");
-  const [queries, setQueries] = useState({});
-  
   const {provinces, areas, prices, categories} = useSelector(
     (state) => state.app
   );
-  
-  console.log(getCodePrice(prices))
-  console.log(getCodeArea(areas))
+  const [queries, setQueries] = useState({});
 
+  
   const handleShowModal = (content, name) => {
     setContent(content);
     setName(name);
@@ -37,7 +34,7 @@ const Search = () => {
     setIsShowodal(false)
     
   },[isShowodal,queries])
-  console.log(isShowodal)
+  console.log(queries)
   return (
     <>
       <div className="p-[10px] w-3/5 my-3 bg-[#febb02] rounded-lg flex-col lg:flex-row flex items-center justify-around gap-2">

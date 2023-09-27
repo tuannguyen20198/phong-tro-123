@@ -21,7 +21,6 @@ const List = ({categoryCode}) => {
       };
     });
     if (categoryCode) searchParamsObject.categoryCode = categoryCode;
-    // console.log(searchParamsObject);
     dispatch(getPostsLimit(searchParamsObject));
   }, [searchParams, categoryCode]);
   return (

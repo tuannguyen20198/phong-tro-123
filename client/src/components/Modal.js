@@ -217,6 +217,11 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
         {(name === "price" || name === "area") && <button
           type="button"
           className="w-full bg-[#FFA500] py-2 font-medium rounded-bl-md rounded-br-md uppercase"
+          onClick={(e) => handleSubmit(e,{
+                [`${name}Code`]:[convert100toTarget(persent1),convert100toTarget(persent2)],[name]:`Từ ${convert100toTarget(persent1)} - ${convert100toTarget(persent2)} triệu`
+              }
+            )
+          }
         >
           Áp dụng
         </button>}
