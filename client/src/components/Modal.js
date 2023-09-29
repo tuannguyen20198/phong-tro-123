@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, memo} from "react";
 import icons from "../utils/icons";
 import { getNumbersPrice,getNumbersArea } from "../utils/Common/getNumbers";
+import { getCodes,getCodesArea } from "../utils/Common/getCodes";
+
 const {GrLinkPrevious} = icons;
-const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
-  const [persent1, setPersent1] = useState(0);
-  const [persent2, setPersent2] = useState(100);
+const Modal = ({ setIsShowodal, content, name, handleSubmit, queries, arrMinMax }) => {
+  console.log(arrMinMax)
+  const [persent1, setPersent1] = useState(name === "price" && arrMinMax?.priceArr ? arrMinMax?.priceArr[0] : name === "area" && arrMinMax?.areaArr ? arrMinMax?.areaArr[0] : 0);
+  const [persent2, setPersent2] = useState(name === "price" && arrMinMax?.priceArr ? arrMinMax?.priceArr[1] : name === "area" && arrMinMax?.areaArr ? arrMinMax?.areaArr[1] :100);
   const [activedEl, setActivedEl] = useState("");
 
   useEffect(() => {
@@ -18,7 +21,7 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
       activedTrackEl.style.right = `${100 - persent2}%`;
     }
     }
-  }, [persent1, persent2]);
+  });
   const handleClickStack = (e, value) => {
     e.stopPropagation();
     const strackEl = document.getElementById("track");
@@ -48,8 +51,7 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
 
   const handleActive = (code, value) => {
     setActivedEl(code);
-    let arrMaxMin =name === "price" ? getNumbersPrice(value) : getNumbersArea(value);
-    console.log(arrMaxMin);
+    let arrMaxMin = name === "price" ? getNumbersPrice(value) : getNumbersArea(value);
     if (arrMaxMin.length === 1) {
       if (arrMaxMin[0] === 1) {
         setPersent1(0);
@@ -69,6 +71,17 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
       setPersent2(convertto100(arrMaxMin[1]));
     }
   };
+
+  const handleBeforeSubmit = (e) => {
+    const gaps = name === "price" ? getCodes([convert100toTarget(persent1),convert100toTarget(persent2)],content) :name === "area" ? getCodesArea([convert100toTarget(persent1),convert100toTarget(persent2)],content) : []
+    handleSubmit(e,{
+      [`${name}Code`]:gaps?.map(item => item.code),
+      [name]:`Từ ${convert100toTarget(persent1)} - ${convert100toTarget(persent2)} ${name === "price" ? "triệu" : "m2"}`
+    },{
+      [`${name}Arr`] : [persent1,persent2]
+    })
+  }
+  
 
   return (
     <div
@@ -110,6 +123,7 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
                     value={item.code}
                     checked={item.code === queries[`${name}Code`] ? true : false}
                     onClick={(e) => handleSubmit(e,{[name]:item.value,[`${name}Code`]: item.code})}
+                    readOnly
                   />
                   <label htmlFor={item.code}>{item.value}</label>
                 </span>
@@ -217,11 +231,7 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
         {(name === "price" || name === "area") && <button
           type="button"
           className="w-full bg-[#FFA500] py-2 font-medium rounded-bl-md rounded-br-md uppercase"
-          onClick={(e) => handleSubmit(e,{
-                [`${name}Code`]:[convert100toTarget(persent1),convert100toTarget(persent2)],[name]:`Từ ${convert100toTarget(persent1)} - ${convert100toTarget(persent2)} triệu`
-              }
-            )
-          }
+          onClick={handleBeforeSubmit}
         >
           Áp dụng
         </button>}
@@ -230,4 +240,4 @@ const Modal = ({setIsShowodal, content, name, handleSubmit,queries}) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);
