@@ -2,8 +2,10 @@ import React, {useCallback, useState} from "react";
 import {SearchItem, Modal} from "../../components";
 import icons from "../../utils/icons";
 import {HiOutlineLocationMarker} from "react-icons/hi";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import * as action from "../../store/action"
+import { useNavigate,createSearchParams } from "react-router-dom";
+import {path} from "../../utils/constant"
 
 const {
   BsChevronRight,
@@ -22,12 +24,14 @@ const Search = () => {
   );
   const [queries, setQueries] = useState({});
   const [arrMinMax,setArrMinax] = useState({});
-  const dispatch = useDispatch()
+  const [defaultText, setdefaultText] = useState('');
+  const navigate = useNavigate()
 
-  const handleShowModal = (content, name) => {
+  const handleShowModal = (content, name,defaultText) => {
     setContent(content);
     setName(name);
     setIsShowodal(true);
+    setdefaultText(defaultText)
   };
   const handleSubmit = useCallback((e, query, arrMaxMin)=>{
     e.stopPropagation();
@@ -37,14 +41,16 @@ const Search = () => {
   },[isShowodal,queries])
 
   const handleSearch = () => {
-    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code'))
+    const queryCodes = Object.entries(queries).filter(item => item[0].includes('Code')).filter(item => item[1])
     let queryCodesObj = {}
     queryCodes.forEach(item => {
       queryCodesObj[item[0]] = item[1]
     })
-    dispatch(action.getPostsLimit(queryCodesObj))
-    setQueries("")
     console.log(queryCodesObj)
+    navigate({
+      pathname: path.SEARCH,
+      search: createSearchParams(queryCodesObj).toString(),
+    })
   }
   
   return (
@@ -52,19 +58,19 @@ const Search = () => {
       <div className="p-[10px] w-3/5 my-3 bg-[#febb02] rounded-lg flex-col lg:flex-row flex items-center justify-around gap-2">
         <span
           className="flex-1 cursor-pointer"
-          onClick={() => handleShowModal(categories, "category")}
+          onClick={() => handleShowModal(categories, "category","Tìm tất cả")}
         >
           <SearchItem
             fontWeight
             IconBefore={<MdOutlineHouseSiding />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
             text={queries.category}
-            defaultText ={"Phòng trọ, nhà trọ"}
+            defaultText = {"Tìm tất cả"}
           />
         </span>
         <span
           className="flex-1 cursor-pointer"
-          onClick={() => handleShowModal(provinces, "province")}
+          onClick={() => handleShowModal(provinces, "province","Toàn quốc")}
         >
           <SearchItem
             IconBefore={<HiOutlineLocationMarker />}
@@ -72,7 +78,7 @@ const Search = () => {
             text={queries.province} defaultText ={"Toàn quốc"}
           />
         </span>
-        <span onClick={() => handleShowModal(prices, "price")}>
+        <span onClick={() => handleShowModal(prices, "price","Chọn giá")}>
           <SearchItem
             IconBefore={<TbReportMoney />}
             IconAfter={<BsChevronRight color="rgb(156,163,175)" />}
@@ -81,7 +87,7 @@ const Search = () => {
         </span>
         <span
           className="flex-1 cursor-pointer"
-          onClick={() => handleShowModal(areas, "area")}
+          onClick={() => handleShowModal(areas, "area","Chọn khu vực")}
         >
           <SearchItem
             IconBefore={<RiCrop2Line />}
@@ -99,7 +105,15 @@ const Search = () => {
         </button>
       </div>
       {isShowodal && (
-        <Modal handleSubmit={handleSubmit} queries={queries} arrMinMax={arrMinMax} content={content} name={name} setIsShowodal={setIsShowodal} />
+        <Modal 
+          handleSubmit={handleSubmit} 
+          queries={queries} 
+          arrMinMax={arrMinMax} 
+          content={content} 
+          name={name} 
+          setIsShowodal={setIsShowodal}
+          defaultText={defaultText} 
+        />
       )}
     </>
   );
