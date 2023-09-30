@@ -4,10 +4,11 @@ import {Outlet} from "react-router-dom";
 import {Navigation, Search} from "./index";
 import {Intro, Contact} from "../../components";
 import * as actions from "../../store/action/";
-import {useDispatch} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector(state => state.auth)
   useEffect(() => {
     dispatch(actions.getPrices());
     dispatch(actions.getAreas());
@@ -17,7 +18,7 @@ const Home = () => {
     <div className="w-full flex gap-6 flex-col items-center h-full">
       <Header />
       <Navigation />
-      <Search />
+      {isLoggedIn && <Search/>}
       <div className="w-4/5 lg:w-3/5 flex flex-col items-start mt-3 justify-start">
         <Outlet />
       </div>
