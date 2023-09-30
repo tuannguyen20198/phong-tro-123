@@ -5,7 +5,6 @@ import { getCodes,getCodesArea } from "../utils/Common/getCodes";
 
 const {GrLinkPrevious} = icons;
 const Modal = ({ setIsShowodal, content, name, handleSubmit, queries, arrMinMax,defaultText }) => {
-  console.log(arrMinMax)
   const [persent1, setPersent1] = useState(name === "price" && arrMinMax?.priceArr ? arrMinMax?.priceArr[0] : name === "area" && arrMinMax?.areaArr ? arrMinMax?.areaArr[0] : 0);
   const [persent2, setPersent2] = useState(name === "price" && arrMinMax?.priceArr ? arrMinMax?.priceArr[1] : name === "area" && arrMinMax?.areaArr ? arrMinMax?.areaArr[1] :100);
   const [activedEl, setActivedEl] = useState("");

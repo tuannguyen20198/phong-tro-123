@@ -1,16 +1,19 @@
 import React, {useState, useEffect, forwardRef} from "react";
 import {ItemSidebar, RelatedPost} from "../../components";
 import {List, Pagination} from "./index";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const SearchDetail = () => {
   const {prices, areas} = useSelector((state) => state.app);
+  const location = useLocation()
+  console.log(location)
 
   return (
     <div className="w-full flex flex-col gap-3">
       <div>
-        {/* <h1 className="text-[28px] font-bold">{categoryCurrent?.header}</h1>
-        <p className="text-base text-gray-700">{categoryCurrent?.subheader}</p> */}
+        <h1 className="text-[28px] font-bold">{location.state?.titleSearch || 'Kết quả tìm kiếm'}</h1>
+        <p className="text-base text-gray-700">{`${location.state?.titleSearch || ''}phòng mới xây, chính chủ gần chợ, trường học, siêu thị, cửa hàng tiện lợi, khu an ninh`}</p>
       </div>
       <div className="w-full flex gap-4">
         <div className="w-[70%]">

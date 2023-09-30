@@ -31,7 +31,6 @@ const ItemSidebar = ({title, content, isDouble, type}) => {
       pathname: location.pathname,
       search: createSearchParams({
         [type]: code,
-        // page:
       }).toString(),
     });
   };

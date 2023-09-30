@@ -1,10 +1,10 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {SearchItem, Modal} from "../../components";
 import icons from "../../utils/icons";
 import {HiOutlineLocationMarker} from "react-icons/hi";
 import {useSelector} from "react-redux";
 import * as action from "../../store/action"
-import { useNavigate,createSearchParams } from "react-router-dom";
+import { useNavigate,createSearchParams,useLocation } from "react-router-dom";
 import {path} from "../../utils/constant"
 
 const {
@@ -26,8 +26,16 @@ const Search = () => {
   const [arrMinMax,setArrMinax] = useState({});
   const [defaultText, setdefaultText] = useState('');
   const navigate = useNavigate()
+  const location = useLocation()
+  useEffect(() => {
+    if (!location.pathname.includes(path.SEARCH)) 
+    {
+      setArrMinax({})
+      setQueries({})
+    }
+  },[location])
 
-  const handleShowModal = (content, name,defaultText) => {
+  const handleShowModal = (content, name, defaultText) => {
     setContent(content);
     setName(name);
     setIsShowodal(true);
@@ -46,11 +54,24 @@ const Search = () => {
     queryCodes.forEach(item => {
       queryCodesObj[item[0]] = item[1]
     })
-    console.log(queryCodesObj)
+    const queryText = Object.entries(queries).filter(item => !item[0].includes('Code'))
+    console.log(queryText)
+    let queryTextObj = {}
+    queryText.forEach(item => { queryTextObj[item[0]] = item[1] })
+    console.log(queryTextObj)
+    let titleSearch = `${queryTextObj.category 
+      ? queryTextObj.category 
+      : 'Cho thuê tất cả'} ${queryTextObj.province 
+        ? `Tỉnh ${queryTextObj.province}`:
+        ''} ${queryTextObj.price 
+          ? `giá ${queryTextObj.price}` 
+          : ''} ${queryTextObj.area 
+            ? `diện tích ${queryTextObj.area}` : ''} `
+    console.log(titleSearch)   
     navigate({
       pathname: path.SEARCH,
       search: createSearchParams(queryCodesObj).toString(),
-    })
+    },{ state: { titleSearch } })
   }
   
   return (
