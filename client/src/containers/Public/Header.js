@@ -14,6 +14,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const headerRef = useRef()
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { currentData } = useSelector(state => state.user)
+
   useEffect(() => {
     headerRef.current.scrollIntoView({behavior:'smooth',block:'start'})
   },[searchParams.get("page")])
@@ -31,7 +33,7 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center gap-1">
-          <small>Tên !</small>
+          <small>{currentData?.name}</small>
           {!isLoggedIn && (
             <div className="flex items-center gap-1">
               <Button
