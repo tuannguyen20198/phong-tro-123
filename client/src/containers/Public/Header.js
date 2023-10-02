@@ -1,13 +1,13 @@
 import React, { useCallback,useEffect,useRef,useState } from "react";
 import logo from "../../assets/logowithoutbg.png";
-import { Button } from "../../components";
+import { Button, User } from "../../components";
 import icons from "../../utils/icons";
 import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as action from "../../store/action/auth";
 import { path } from "../../utils/constant";
 import menuManage from "../../utils/menuManage";
-const { AiOutlinePlusCircle,AiOutlineLogout } = icons;
+const { AiOutlinePlusCircle,AiOutlineLogout,BsChevronDown } = icons;
 
 const Header = () => {
   const [searchParams] = useSearchParams()
@@ -36,7 +36,7 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center gap-1">
-          <small>{currentData?.name}</small>
+          <User/>
           {!isLoggedIn && (
             <div className="flex items-center gap-1">
               <Button
@@ -60,13 +60,14 @@ const Header = () => {
             </div>
           )}
           {isLoggedIn && 
-            <div className="flex items-center gap-1 relative">
+            <div className="flex items-center gap-3 relative">
               <Button
                 text={"Quản lý tài khoản"}
                 textColor="text-white"
                 bgColor="bg-secondary1"
                 px="px-4"
                 onClick={()=>setIsShowMenu(prev => !prev)}
+                IcAfter={BsChevronDown}
               />
               {isShowMenu && <div className="absolute top-full min-w-200 left-0 bg-white shadow-md rounded-md p-4 flex flex-col">
                 {menuManage.map(item => {

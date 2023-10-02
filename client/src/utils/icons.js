@@ -8,6 +8,7 @@ import {MdOutlineHouseSiding,MdOutlineLibraryBooks} from "react-icons/md";
 import {FiSearch} from "react-icons/fi";
 import {ImPencil2} from "react-icons/im";
 import {BiUserPin} from "react-icons/bi"
+import {BsChevronDown} from "react-icons/bs"
 
 const icons = {
   AiOutlinePlusCircle,
@@ -27,6 +28,7 @@ const icons = {
   ImPencil2,
   MdOutlineLibraryBooks,
   BiUserPin,
-  AiOutlineLogout
+  AiOutlineLogout,
+  BsChevronDown
 };
 export default icons;
