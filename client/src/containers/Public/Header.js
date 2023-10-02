@@ -1,4 +1,4 @@
-import React, { useCallback,useEffect,useRef } from "react";
+import React, { useCallback,useEffect,useRef,useState } from "react";
 import logo from "../../assets/logowithoutbg.png";
 import { Button } from "../../components";
 import icons from "../../utils/icons";
@@ -6,7 +6,8 @@ import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as action from "../../store/action/auth";
 import { path } from "../../utils/constant";
-const { AiOutlinePlusCircle } = icons;
+import menuManage from "../../utils/menuManage";
+const { AiOutlinePlusCircle,AiOutlineLogout } = icons;
 
 const Header = () => {
   const [searchParams] = useSearchParams()
@@ -15,6 +16,8 @@ const Header = () => {
   const headerRef = useRef()
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { currentData } = useSelector(state => state.user)
+  const [isShowMenu, setIsShowMenu] = useState(false);
+  
 
   useEffect(() => {
     headerRef.current.scrollIntoView({behavior:'smooth',block:'start'})
@@ -56,22 +59,42 @@ const Header = () => {
               />
             </div>
           )}
-          {isLoggedIn && (
-            <div className="flex items-center gap-1">
+          {isLoggedIn && 
+            <div className="flex items-center gap-1 relative">
               <Button
-                text={"Đăng xuất"}
+                text={"Quản lý tài khoản"}
                 textColor="text-white"
                 bgColor="bg-secondary1"
-                onClick={() => dispatch(action.logout())}
+                px="px-4"
+                onClick={()=>setIsShowMenu(prev => !prev)}
               />
-              <Button
-                text={"Đăng tin mới"}
-                textColor="text-white"
-                bgColor="bg-secondary2"
-                IcAfter={AiOutlinePlusCircle}
-              />
-            </div>
-          )}
+              {isShowMenu && <div className="absolute top-full min-w-200 left-0 bg-white shadow-md rounded-md p-4 flex flex-col">
+                {menuManage.map(item => {
+                  return (
+                    <Link className="hover:text-orange-500 text-blue-600 border-b border-gray-200 py-2 flex items-center gap-2" key={item.id} to={item?.path}
+                    >
+                        {item?.icon}
+                        {item.text}
+                    </Link>
+                  )
+                })}
+                  <span className="cursor-pointer hover:text-orange-500 text-blue-600 border-gray-200 py-2 flex items-center gap-2" onClick={() => 
+                    {
+                      dispatch(action.logout())
+                      setIsShowMenu(false)
+                    }
+                  }>
+                  <AiOutlineLogout/>
+                  Đăng xuất
+                </span>
+              </div>}
+            <Button
+              text={"Đăng tin mới"}
+              textColor="text-white"
+              bgColor="bg-secondary2"
+              IcAfter={AiOutlinePlusCircle}
+            />
+            </div>}
         </div>
       </div>
     </div>
