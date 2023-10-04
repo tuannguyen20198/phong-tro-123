@@ -15,7 +15,7 @@ const User = () => {
         </span>
         <span>
           Mã tài khoản:
-          <span className="font-semibold">{`${currentData?.id.slice(0,20)}...`}</span>
+          <span className="font-semibold">{`${currentData?.id?.slice(0,20)}...`}</span>
         </span>
       </div>
     </div>

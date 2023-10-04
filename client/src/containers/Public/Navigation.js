@@ -15,7 +15,7 @@ const notActive =
   "hover:bg-secondary2 h-full flex justify-center items-center py-2 px-4";
 const active =
   "hover:bg-secondary2 h-full flex justify-center items-center py-2 px-4 bg-secondary2";
-const Navigation = () => {
+const Navigation = ({isAdmin}) => {
   // const [categories, setCategories] = useState([]) 
   const {categories} = useSelector(state => state.app)
   const dispatch = useDispatch()
@@ -24,7 +24,7 @@ const Navigation = () => {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center h-[40px] bg-secondary1 text-white">
+    <div className={`w-full flex ${isAdmin ? "justify-start":"justify-center"} items-center h-[40px] bg-secondary1 text-white`}>
       <div className="w-3/5 flex h-full items-center text-sm font-medium">
         <NavLink
           to={`/`}
@@ -40,7 +40,7 @@ const Navigation = () => {
                 className="h-full flex justify-center items-center"
               >
                 <NavLink
-                  to={`${formatVietnameseToString(item.value)}`}
+                  to={`/${formatVietnameseToString(item.value)}`}
                   className={({ isActive }) => (isActive ? active : notActive)}
                 >
                   {item.value}

@@ -36,9 +36,9 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center gap-1">
-          <User/>
           {!isLoggedIn && (
             <div className="flex items-center gap-1">
+              <small>Phongtro123.com xin chào !</small>
               <Button
                 text={"Đăng nhập"}
                 textColor="text-white"
@@ -51,16 +51,11 @@ const Header = () => {
                 bgColor="bg-[#3961fb]"
                 onClick={() => goLogin(true)}
               />
-              <Button
-                text={"Đăng tin mới"}
-                textColor="text-white"
-                bgColor="bg-secondary2"
-                IcAfter={AiOutlinePlusCircle}
-              />
             </div>
           )}
           {isLoggedIn && 
             <div className="flex items-center gap-3 relative">
+              <User/>
               <Button
                 text={"Quản lý tài khoản"}
                 textColor="text-white"
@@ -69,7 +64,7 @@ const Header = () => {
                 onClick={()=>setIsShowMenu(prev => !prev)}
                 IcAfter={BsChevronDown}
               />
-              {isShowMenu && <div className="absolute top-full min-w-200 left-0 bg-white shadow-md rounded-md p-4 flex flex-col">
+              {isShowMenu && <div className="absolute top-full min-w-200 right-0 bg-white shadow-md rounded-md p-4 flex flex-col">
                 {menuManage.map(item => {
                   return (
                     <Link className="hover:text-orange-500 text-blue-600 border-b border-gray-200 py-2 flex items-center gap-2" key={item.id} to={item?.path}
@@ -89,13 +84,13 @@ const Header = () => {
                   Đăng xuất
                 </span>
               </div>}
+            </div>}
             <Button
               text={"Đăng tin mới"}
               textColor="text-white"
               bgColor="bg-secondary2"
               IcAfter={AiOutlinePlusCircle}
             />
-            </div>}
         </div>
       </div>
     </div>

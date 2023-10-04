@@ -10,19 +10,19 @@ const menuManage = [
     {
         id: 1,
         text: 'Đăng tin cho thuê',
-        path:'/system/create-new',
+        path:'/he-thong/tao-moi-tin-dang',
         icon:<ImPencil2/>
     },
     {
         id: 2,
         text: 'Quản lý tin đăng',
-        path:'/system/anage-post',
+        path:'/he-thong/quan-ly-bai-dang',
         icon:<MdOutlineLibraryBooks/>
     },
     {
         id: 3,
         text: 'Thông tin tài khoản',
-        path:'/system/profile',
+        path:'/he-thong/thong-tin-tai-khoan',
         icon:<BiUserPin/>
     }
 ]
