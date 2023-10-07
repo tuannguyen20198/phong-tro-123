@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {SelectAddress} from "../components"
+import {Select,InputReadOnly} from "../components"
 import {apiGetPublicDistrict, apiGetPublicProvinces } from '../services' 
 
 const Address = () => {
@@ -39,19 +39,10 @@ const Address = () => {
       <h2 className='font-semibold text-xl py-4'>Địa chỉ cho thuê</h2>
       <div className='flex flex-col gap-4'>
         <div className='flex items-center gap-4'>
-          <SelectAddress type="province"  value={province} setValue={setProvince} options={provinces} label='Tỉnh/Thành phố'/>
-          <SelectAddress reset={reset} type="district"  value={district} setValue={setDistrict} options={districts} label='Quận/Huyện'/>
+          <Select type="province"  value={province} setValue={setProvince} options={provinces} label='Tỉnh/Thành phố'/>
+          <Select reset={reset} type="district"  value={district} setValue={setDistrict} options={districts} label='Quận/Huyện'/>
         </div>
-        <div className='flex flex-col gap-2'>
-          <label className='font-medium' htmlFor="exactly-address">Địa chỉ chính xác </label>
-          <input 
-            type="text" 
-            id='exactly-address' 
-            readOnly 
-            className='border border-gray-200 rounded-md bg-gray-100 p-2 w-full outline-none'
-            value={`${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`}
-          />
-        </div>
+        <InputReadOnly label='Địa chỉ chính xác' value={`${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`}/>
       </div>
     </div>
   )
