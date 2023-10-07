@@ -1,8 +1,8 @@
-import React,{useEffect,useState} from 'react'
+import React,{memo, useEffect,useState} from 'react'
 import {Select,InputReadOnly} from "../components"
 import {apiGetPublicDistrict, apiGetPublicProvinces } from '../services' 
 
-const Address = () => {
+const Address = ({setPayLoad}) => {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   
@@ -34,6 +34,13 @@ const Address = () => {
     !province ? setReset(true) : setReset(false)
     !province && setDistricts([])
   },[province])
+  useEffect(() => {
+    setPayLoad(prev => ({
+      ...prev,
+      address: `${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`,
+      province: province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''
+    }))
+  },[province,district])
   return (
     <div>
       <h2 className='font-semibold text-xl py-4'>Địa chỉ cho thuê</h2>
@@ -48,4 +55,4 @@ const Address = () => {
   )
 }
 
-export default Address
+export default memo(Address)

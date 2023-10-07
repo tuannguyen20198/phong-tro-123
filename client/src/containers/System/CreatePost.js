@@ -1,16 +1,30 @@
-import React  from 'react'
+import React, { useState } from 'react'
 import { Overview, Address } from "../../components"
 import { BsCameraFill } from 'react-icons/bs'
 
 const createPost = () => {
-
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [payLoad, setPayLoad] = useState({
+    categoryCode:'',
+    title:'',
+    priceNumber:0,
+    areaNumber:0,
+    image:'',
+    address:'',
+    priceCode:'',
+    areaCode:'',
+    description:'',
+    target:'',
+    province:'',
+  });
+  console.log(payLoad)
   return (
     <div className='px-6 gap-4'>
       <h1 className='text-3xl font-medium py-4 border-b border-gray-200'>Đăng tin mới</h1>
       <div className='flex gap-4'>
         <div className='py-4 flex flex-col gap-8 flex-auto'>
-          <Address />
-          <Overview />
+          <Address payLoad={payLoad} setPayLoad={setPayLoad}/>
+          <Overview payLoad={payLoad} setPayLoad={setPayLoad}/>
           <div className='w-full'>
             <h2 className='font-semibold text-xl py-4'>Hình ảnh</h2>
             <small>Cập nhật hình ảnh rõ ràng sẽ cho thuê nhanh hơn</small>
