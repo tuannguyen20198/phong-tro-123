@@ -6,9 +6,9 @@ import {TbReportMoney} from "react-icons/tb";
 import {RiCrop2Line, RiHeartFill, RiHeartLine} from "react-icons/ri";
 import {MdOutlineHouseSiding,MdOutlineLibraryBooks} from "react-icons/md";
 import {FiSearch} from "react-icons/fi";
-import {ImPencil2} from "react-icons/im";
+import {ImPencil2,ImBin} from "react-icons/im";
 import {BiUserPin} from "react-icons/bi"
-import {BsChevronDown} from "react-icons/bs"
+import {BsChevronDown,BsCameraFill} from "react-icons/bs"
 
 const icons = {
   AiOutlinePlusCircle,
@@ -29,6 +29,8 @@ const icons = {
   MdOutlineLibraryBooks,
   BiUserPin,
   AiOutlineLogout,
-  BsChevronDown
+  BsChevronDown,
+  ImBin,
+  BsCameraFill
 };
 export default icons;

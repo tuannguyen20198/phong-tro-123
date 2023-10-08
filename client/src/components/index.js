@@ -17,3 +17,4 @@ export {default as Overview} from "./Overview";
 export {default as Select} from "./Select";
 export {default as InputReadOnly} from "./InputReadOnly";
 export {default as InputFromV2} from "./InputFromV2";
+export {default as Loading} from "./Loading";
