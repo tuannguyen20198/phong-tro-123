@@ -28,8 +28,6 @@ const createPost = () => {
   const [isLoading, setisLoading] = useState(false)
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {prices,areas} = useSelector(state => state.app)
-  console.log(prices)
-
 
   const handleFiles = async(e) => {
     e.stopPropagation()
@@ -57,10 +55,17 @@ const createPost = () => {
     }))
   }
   const handleSubmit = () => {
-    let priceCodeArr = getCodes([+payLoad.priceNumber,+payLoad.priceNumber],prices)
-    let priceCode = priceCodeArr[priceCodeArr.length - 1]?.code
-    console.log(payLoad)
-    console.log(priceCode)
+    let priceCodeArr = getCodes(+payLoad.priceNumber,prices,1,15)
+    let priceCode = priceCodeArr[0]?.code
+    let areaCodeArr = getCodesArea(+payLoad.areaNumber,areas,0,90)
+    let areaCode = areaCodeArr[0]?.code
+
+    let finalPayload = {
+      ...payLoad,
+      priceCode,
+      areaCode
+    }
+    console.log(finalPayload)
   }
   
   return (
