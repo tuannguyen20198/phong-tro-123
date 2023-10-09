@@ -27,8 +27,9 @@ const createPost = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isLoading, setisLoading] = useState(false)
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {prices,areas} = useSelector(state => state.app)
-
+  const {prices,areas,categories,provinces} = useSelector(state => state.app)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {currentData} = useSelector(state => state.user)
   const handleFiles = async(e) => {
     e.stopPropagation()
     setisLoading(true)
@@ -55,7 +56,7 @@ const createPost = () => {
     }))
   }
   const handleSubmit = () => {
-    let priceCodeArr = getCodes(+payLoad.priceNumber,prices,1,15)
+    let priceCodeArr = getCodes(+payLoad.priceNumber / Math.pow(10,6),prices,1,15)
     let priceCode = priceCodeArr[0]?.code
     let areaCodeArr = getCodesArea(+payLoad.areaNumber,areas,0,90)
     let areaCode = areaCodeArr[0]?.code
@@ -63,7 +64,11 @@ const createPost = () => {
     let finalPayload = {
       ...payLoad,
       priceCode,
-      areaCode
+      areaCode,
+      userId:currentData.id,
+      priceNumber: +payLoad.priceNumber / Math.pow(10,6),
+      target: payLoad.target || 'Tất cả',
+      label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad.address?.split(',')[0]}`
     }
     console.log(finalPayload)
   }
