@@ -1,6 +1,7 @@
 import db from "../models";
 const { Op } = require("sequelize") ;
 import {v4 as generateId} from "uuid"
+import generateCode from "../utils/generateCode";
 import moment from "moment"
 require("dotenv").config();
 export const getPostsService = () =>
@@ -127,7 +128,7 @@ export const createNewPostService = (body, userId) =>
         address: body?.address || null,
         attributesId,
         categoryCode: body.categoryCode,
-        description: body.description || null,
+        description: JSON.stringify(body.description ) || null,
         userId,
         overviewId,
         imagesId,
@@ -139,7 +140,7 @@ export const createNewPostService = (body, userId) =>
       });
       await db.Attribute.create({
         id: attributesId,
-        price: priceNumber < 1 ? `${+priceNumber * 1000000} đồng/tháng` : `${priceNumber} triệu/tháng`,
+        price: body.priceNumber < 1 ? `${+body.priceNumber * 1000000} đồng/tháng` : `${body.priceNumber} triệu/tháng`,
         acreage: `${areaNumber} m2`,
         published: moment(new Date).format('DD/MM/YYYY'),
         hashtag
@@ -180,8 +181,9 @@ export const createNewPostService = (body, userId) =>
         }
       })
       resolve({
-        err: 0,
-        msg: 'OK',
+        err: response ? 0 : 1,
+        msg: response ? "Ok" : "Getting posts id failed",
+        response
       });
     } catch (error) {
       reject(error);

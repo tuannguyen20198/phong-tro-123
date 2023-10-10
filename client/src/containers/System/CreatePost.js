@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Overview, Address,Loading,Button } from "../../components"
-import { apiUploadImages } from '../../services'
+import { apiCreatePost, apiUploadImages } from '../../services'
 import icons from '../../utils/icons'
 import { getCodes,getCodesArea } from '../../utils/Common/getCodes'
 import { UseSelector, useSelector } from 'react-redux'
@@ -55,7 +55,7 @@ const createPost = () => {
       images: prev.images?.filter(item => item !== image)
     }))
   }
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     let priceCodeArr = getCodes(+payLoad.priceNumber / Math.pow(10,6),prices,1,15)
     let priceCode = priceCodeArr[0]?.code
     let areaCodeArr = getCodesArea(+payLoad.areaNumber,areas,0,90)
@@ -70,7 +70,8 @@ const createPost = () => {
       target: payLoad.target || 'Tất cả',
       label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad.address?.split(',')[0]}`
     }
-    console.log(finalPayload)
+    const response = await apiCreatePost(finalPayload)
+    console.log(response)
   }
   
   return (
