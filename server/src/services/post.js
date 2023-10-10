@@ -4,13 +4,14 @@ import {v4 as generateId} from "uuid"
 import generateCode from "../utils/generateCode";
 import moment from "moment"
 require("dotenv").config();
+
 export const getPostsService = () =>
   new Promise(async (resolve, reject) => {
     try {
       const response = await db.Post.findAll({
         raw: true,
         nest: true,
-        include: [
+        includes: [
           {
             model: db.Image,
             as: "images",
@@ -51,7 +52,7 @@ export const getPostsLimitService = (page, query, {priceNumber,areaNumber}) =>
         nest: true,
         offset: offset * +process.env.LIMIT,
         limit: +process.env.LIMIT,
-        include: [
+        includes: [
           {
             model: db.Image,
             as: "images",
@@ -88,7 +89,7 @@ export const getNewPostService = () =>
         offset: 0,
         order: [["createdAt", "DESC"]],
         limit: +process.env.LIMIT,
-        include: [
+        includes: [
           {
             model: db.Image,
             as: "images",
@@ -134,14 +135,14 @@ export const createNewPostService = (body, userId) =>
         imagesId,
         areaCode: body.areaCode || null,
         priceCode: body.priceCode || null,
-        provinceCode: body.provinceCode || null,
+        provinceCode: body?.province?.includes('Thành phố') ? generateCode(body?.province?.replace('Thành phố ', '')) : generateCode(body?.province?.replace('Tỉnh ', '')) || null,
         priceNumber: body.priceNumber,
         areaNumber: body.areaNumber
       });
       await db.Attribute.create({
         id: attributesId,
-        price: body.priceNumber < 1 ? `${+body.priceNumber * 1000000} đồng/tháng` : `${body.priceNumber} triệu/tháng`,
-        acreage: `${areaNumber} m2`,
+        price: body.priceNumber < 1 ? `${+body.priceNumber * 1000000}đồng/tháng` : `${body.priceNumber}triệu/tháng`,
+        acreage: `${body.areaNumber}m2`,
         published: moment(new Date).format('DD/MM/YYYY'),
         hashtag
       });
@@ -167,8 +168,8 @@ export const createNewPostService = (body, userId) =>
           ]
         },
         defaults:{
-          code: body?.province?.include('Thành phố') ? generateCode(body?.province?.replace('Thành phố ', '')) : generateCode(body?.province?.replace('Tỉnh ', '')),
-          value:body?.province?.include('Thành phố') ? body?.province?.replace('Thành phố ', '') : body?.province?.replace('Tỉnh ', '')
+          code: body?.province?.includes('Thành phố') ? generateCode(body?.province?.replace('Thành phố ', '')) : generateCode(body?.province?.replace('Tỉnh ', '')),
+          value:body?.province?.includes('Thành phố') ? body?.province?.replace('Thành phố ', '') : body?.province?.replace('Tỉnh ', '')
         }
       })
       await db.Label.findOrCreate({

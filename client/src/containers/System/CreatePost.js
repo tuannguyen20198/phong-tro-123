@@ -68,7 +68,7 @@ const createPost = () => {
       userId:currentData.id,
       priceNumber: +payLoad.priceNumber / Math.pow(10,6),
       target: payLoad.target || 'Tất cả',
-      label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad.address?.split(',')[0]}`
+      label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad?.address?.split(',')[0]}`
     }
     const response = await apiCreatePost(finalPayload)
     console.log(response)

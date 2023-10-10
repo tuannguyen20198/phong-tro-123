@@ -7,7 +7,7 @@ router.get("/all", postController.getPost);
 router.get("/limit", postController.getPostsLimit);
 router.get("/new-post", postController.getNewPosts);
 
-// router.use(verifyToken)
-// router.post("/create-new",postController.createNewPost)
+router.use(verifyToken)
+router.post("/create-new",postController.createNewPost)
 
 export default router;

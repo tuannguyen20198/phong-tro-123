@@ -3,7 +3,7 @@ const initState = {
   msg: "",
   categories: [],
   prices: [],
-  province: [],
+  provinces: [],
 };
 const appReducer = (state = initState, action) => {
   switch (action.type) {
