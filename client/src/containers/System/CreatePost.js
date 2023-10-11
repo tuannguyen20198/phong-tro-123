@@ -3,7 +3,8 @@ import { Overview, Address,Loading,Button } from "../../components"
 import { apiCreatePost, apiUploadImages } from '../../services'
 import icons from '../../utils/icons'
 import { getCodes,getCodesArea } from '../../utils/Common/getCodes'
-import { UseSelector, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import Swal from "sweetalert2"
 
 const {BsCameraFill,ImBin} = icons
 
@@ -71,7 +72,25 @@ const createPost = () => {
       label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad?.address?.split(',')[0]}`
     }
     const response = await apiCreatePost(finalPayload)
-    console.log(response)
+    if (response?.data.err === 0) {
+      Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
+        setPayLoad({
+          categoryCode: '',
+          title: '',
+          priceNumber: 0,
+          areaNumber: 0,
+          images: '',
+          address: '',
+          priceCode: '',
+          areaCode: '',
+          description: '',
+          target: '',
+          province: '',
+        }) 
+      })
+    }else{
+      Swal.fire('Oops!', 'Có lỗi gì đó','error')
+    }
   }
   
   return (

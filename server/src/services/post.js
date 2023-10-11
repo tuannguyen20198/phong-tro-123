@@ -11,7 +11,7 @@ export const getPostsService = () =>
       const response = await db.Post.findAll({
         raw: true,
         nest: true,
-        includes: [
+        include: [
           {
             model: db.Image,
             as: "images",
@@ -52,7 +52,8 @@ export const getPostsLimitService = (page, query, {priceNumber,areaNumber}) =>
         nest: true,
         offset: offset * +process.env.LIMIT,
         limit: +process.env.LIMIT,
-        includes: [
+        order: [["createdAt", "DESC"]],
+        include: [
           {
             model: db.Image,
             as: "images",
@@ -89,7 +90,7 @@ export const getNewPostService = () =>
         offset: 0,
         order: [["createdAt", "DESC"]],
         limit: +process.env.LIMIT,
-        includes: [
+        include: [
           {
             model: db.Image,
             as: "images",
