@@ -12,9 +12,9 @@ const System = () => {
   return (
     <div className='w-full flex min-h-screen flex-col items-center h-screen'>
         <Header/>
-        <div className='flex w-full flex-auto'>
+        <div className='flex w-full h-screen flex-auto'>
           <Sidebar />
-          <div className='flex-auto bg-white h-full p-4'>
+          <div className='flex-auto bg-white h-full p-4 overflow-y-scroll'>
             <Outlet />
           </div>
         </div>
