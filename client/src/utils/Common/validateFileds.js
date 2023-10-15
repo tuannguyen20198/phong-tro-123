@@ -43,6 +43,30 @@ const validate = (payLoad,setInvalidFields) => {
             invalids++;
           }
           break;
+        case "priceNumber":
+          case "areaNumber":
+          if (+item[1] === 0) {
+            setInvalidFields((prev) => [
+              ...prev,
+              {
+                name: item[0],
+                message: "Chưa đặt giá trị cho trường này.",
+              },
+            ]);
+            invalids++;
+          }
+          // eslint-disable-next-line use-isnan
+          if (!+item[1]) {
+            setInvalidFields((prev) => [
+              ...prev,
+              {
+                name: item[0],
+                message: "Trường này phải là số.",
+              },
+            ]);
+            invalids++;
+          }
+          break;
         default:
           break;
       }

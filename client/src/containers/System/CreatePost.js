@@ -3,12 +3,22 @@ import { Overview, Address,Loading,Button } from "../../components"
 import { apiCreatePost, apiUploadImages } from '../../services'
 import icons from '../../utils/icons'
 import { getCodes,getCodesArea } from '../../utils/Common/getCodes'
-import { useSelector } from 'react-redux'
 import Swal from "sweetalert2"
-
+import { useSelector } from 'react-redux'
+import validate from "../../utils/Common/validateFileds"
 const {BsCameraFill,ImBin} = icons
 
 const createPost = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [imagesPreview, setImagesPreview] = useState([]);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isLoading, setisLoading] = useState(false)  
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [invalidFileds, setInValidFileds] = useState([]);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {prices,areas,categories,provinces} = useSelector(state => state.app)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {currentData} = useSelector(state => state.user)
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [payLoad, setPayLoad] = useState({
     categoryCode:'',
@@ -23,14 +33,7 @@ const createPost = () => {
     target:'',
     province:'',
   });
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [imagesPreview, setImagesPreview] = useState([]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [isLoading, setisLoading] = useState(false)
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {prices,areas,categories,provinces} = useSelector(state => state.app)
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {currentData} = useSelector(state => state.user)
+  
   const handleFiles = async(e) => {
     e.stopPropagation()
     setisLoading(true)
@@ -48,7 +51,6 @@ const createPost = () => {
     setPayLoad(prev => ({...prev,images:[...prev.images, ...images]}))
   }
   
-  console.log(payLoad)
   const handleDeleteImage = (image) => {
     setImagesPreview(prev => prev?.filter(item => item !== image))
     setPayLoad(prev => ({
@@ -71,25 +73,30 @@ const createPost = () => {
       target: payLoad.target || 'Tất cả',
       label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad?.address?.split(',')[0]}`
     }
-    const response = await apiCreatePost(finalPayload)
-    if (response?.data.err === 0) {
-      Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
-        setPayLoad({
-          categoryCode: '',
-          title: '',
-          priceNumber: 0,
-          areaNumber: 0,
-          images: '',
-          address: '',
-          priceCode: '',
-          areaCode: '',
-          description: '',
-          target: '',
-          province: '',
-        }) 
-      })
-    }else{
-      Swal.fire('Oops!', 'Có lỗi gì đó','error')
+    const result = validate(finalPayload,setInValidFileds)
+    console.log(result)
+    console.log(invalidFileds)
+    if (result === 0) {
+        const response = await apiCreatePost(finalPayload)
+      if (response?.data.err === 0) {
+        Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
+          setPayLoad({
+            categoryCode: '',
+            title: '',
+            priceNumber: 0,
+            areaNumber: 0,
+            images: '',
+            address: '',
+            priceCode: '',
+            areaCode: '',
+            description: '',
+            target: '',
+            province: '',
+          }) 
+        })
+      }else{
+        Swal.fire('Oops!', 'Có lỗi gì đó','error')
+      }
     }
   }
   
@@ -98,8 +105,8 @@ const createPost = () => {
       <h1 className='text-3xl font-medium py-4 border-b border-gray-200'>Đăng tin mới</h1>
       <div className='flex gap-4'>
         <div className='py-4 flex flex-col gap-8 flex-auto'>
-          <Address payLoad={payLoad} setPayLoad={setPayLoad}/>
-          <Overview payLoad={payLoad} setPayLoad={setPayLoad}/>
+          <Address setInValidFileds={setInValidFileds} invalidFileds={invalidFileds} payLoad={payLoad} setPayLoad={setPayLoad}/>
+          <Overview setInValidFileds={setInValidFileds} invalidFileds={invalidFileds} payLoad={payLoad} setPayLoad={setPayLoad}/>
           <div className='w-full mb-6'>
             <h2 className='font-semibold text-xl py-4'>Hình ảnh</h2>
             <small>Cập nhật hình ảnh rõ ràng sẽ cho thuê nhanh hơn</small>
@@ -113,6 +120,9 @@ const createPost = () => {
                 </div>}
               </label>
               <input onChange={handleFiles} hidden type="file" id='file' multiple/>
+              <small className='text-red-500 block w-full'>
+                {invalidFileds?.some(item => item.name === 'images') && invalidFileds?.find(item => item.name === 'images')?.message}
+              </small>
               <div className='w-full'>
                 <h3 className='font-medium py-4'>Ảnh đã chọn</h3>
                 <div className='flex gap-4 items-center'>

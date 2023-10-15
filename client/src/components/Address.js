@@ -2,7 +2,7 @@ import React,{memo, useEffect,useState} from 'react'
 import {Select,InputReadOnly} from "../components"
 import {apiGetPublicDistrict, apiGetPublicProvinces } from '../services' 
 
-const Address = ({setPayLoad}) => {
+const Address = ({setPayLoad,invalidFileds,setInValidFileds}) => {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   
@@ -37,7 +37,7 @@ const Address = ({setPayLoad}) => {
   useEffect(() => {
     setPayLoad(prev => ({
       ...prev,
-      address: `${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`,
+      address: `${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''}${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`,
       province: province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''
     }))
   },[province,district])
@@ -46,8 +46,24 @@ const Address = ({setPayLoad}) => {
       <h2 className='font-semibold text-xl py-4'>Địa chỉ cho thuê</h2>
       <div className='flex flex-col gap-4'>
         <div className='flex items-center gap-4'>
-          <Select type="province"  value={province} setValue={setProvince} options={provinces} label='Tỉnh/Thành phố'/>
-          <Select reset={reset} type="district"  value={district} setValue={setDistrict} options={districts} label='Quận/Huyện'/>
+          <Select 
+            setInValidFileds={setInValidFileds} 
+            invalidFileds={invalidFileds} 
+            type="province"  
+            value={province} 
+            setValue={setProvince} 
+            options={provinces} 
+            label='Tỉnh/Thành phố'
+          />
+          <Select 
+            setInValidFileds={setInValidFileds} 
+            invalidFileds={invalidFileds} 
+            reset={reset} 
+            type="district"  
+            value={district} 
+            setValue={setDistrict} 
+            options={districts} 
+            label='Quận/Huyện'/>
         </div>
         <InputReadOnly label='Địa chỉ chính xác' value={`${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? `${provinces?.find(item => item.province_id === province)?.province_name}` : ''}`}/>
       </div>
