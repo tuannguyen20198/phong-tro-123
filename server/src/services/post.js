@@ -221,6 +221,10 @@ export const getPostsLimitAdminService = (page, id, query) =>
             as: "user",
             attributes: ["name", "zalo", "phone"],
           },
+          {
+            model: db.Overview,
+            as: "overviews",
+          },
         ],
         attributes: ["id", "title", "star", "address", "description"],
       });
