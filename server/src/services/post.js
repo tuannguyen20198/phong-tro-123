@@ -3,6 +3,7 @@ const { Op } = require("sequelize") ;
 import {v4 as generateId} from "uuid"
 import generateCode from "../utils/generateCode";
 import moment from "moment"
+import generateDate from "./../utils/generateDate";
 require("dotenv").config();
 
 export const getPostsService = () =>
@@ -122,7 +123,7 @@ export const createNewPostService = (body, userId) =>
       const overviewId = generateId()
       const labelCode = generateCode(body.label)
       const hashtag = `#${Math.floor(Math.random() * Math.pow(10,6))}`
-      const currentDate = new Date();
+      const currentDate = generateDate();
       const response = await db.Post.create({
         id: generateId(),
         title: body.title,
@@ -158,8 +159,8 @@ export const createNewPostService = (body, userId) =>
         type: body.category,
         target: body.target,
         bonus: 'Tin thường',
-        created: currentDate,
-        expired: currentDate.setDate(currentDate.getDate() + 10)
+        created: currentDate.today,
+        expired: currentDate.expireDay
       });
       await db.Province.findOrCreate({
         where:{
