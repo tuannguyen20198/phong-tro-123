@@ -3,7 +3,7 @@ const { Op } = require("sequelize") ;
 import {v4 as generateId} from "uuid"
 import generateCode from "../utils/generateCode";
 import moment from "moment"
-import generateDate from "./../utils/generateDate";
+import generateDate from "../utils/generateDate";
 require("dotenv").config();
 
 export const getPostsService = () =>
@@ -160,7 +160,7 @@ export const createNewPostService = (body, userId) =>
         target: body.target,
         bonus: 'Tin thường',
         created: currentDate.today,
-        expired: currentDate.expireDay
+        expire: currentDate.expireDay
       });
       await db.Province.findOrCreate({
         where:{
@@ -187,6 +187,47 @@ export const createNewPostService = (body, userId) =>
         err: response ? 0 : 1,
         msg: response ? "Ok" : "Getting posts id failed",
         response
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+  
+export const getPostsLimitAdminService = (page, id, query) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      let offset = (!page || +page <= 1) ? 0 : (+page - 1);
+      const queries ={...query,userId: id}
+      const response = await db.Post.findAndCountAll({
+        where: queries,
+        raw: true,
+        nest: true,
+        offset: offset * +process.env.LIMIT,
+        limit: +process.env.LIMIT,
+        order: [["createdAt", "DESC"]],
+        include: [
+          {
+            model: db.Image,
+            as: "images",
+            attributes: ["image"],
+          },
+          {
+            model: db.Attribute,
+            as: "attributes",
+            attributes: ["price", "acreage", "published", "hashtag"],
+          },
+          {
+            model: db.User,
+            as: "user",
+            attributes: ["name", "zalo", "phone"],
+          },
+        ],
+        attributes: ["id", "title", "star", "address", "description"],
+      });
+      resolve({
+        err: response ? 0 : 1,
+        msg: response ? "OK" : "Getting posts failed.",
+        response,
       });
     } catch (error) {
       reject(error);

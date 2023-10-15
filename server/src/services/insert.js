@@ -116,7 +116,7 @@ export const insertService = () =>
             created: item?.overview?.content.find(
               (i) => i.name === "Ngày đăng:"
             )?.content,
-            expired: item?.overview?.content.find(
+            expire: item?.overview?.content.find(
               (i) => i.name === "Ngày hết hạn:"
             )?.content,
           });
