@@ -17,8 +17,8 @@ const Button = ({
         "w-full"}`}
       onClick={onClick}
     >
-      <span>{text}</span>
-      <span>{IcAfter && <IcAfter />}</span>
+      <span className="text-center">{text}</span>
+      {IcAfter && <span><IcAfter /></span>}
     </button>
   );
 };
