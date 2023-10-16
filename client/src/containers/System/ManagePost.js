@@ -1,13 +1,16 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect, useState} from 'react'
 import {useDispatch , useSelector} from "react-redux"
 import * as actions from "../../store/action"
 import moment from "moment";
-import {Button} from "../../components"
+import {Button, UpdatePost} from "../../components"
 
 
 const ManagePost = () => {
+
   const dispatch = useDispatch()
+  const [isEdit, setIsEdit] = useState(false);
   const {potsOfCurrent} = useSelector(state => state.post)
+  
   useEffect(() => {
     dispatch(actions.getPostsLimitAdmin())
   },[])
@@ -58,6 +61,10 @@ const ManagePost = () => {
                           text='Sửa' 
                           bgColor='bg-green-600' 
                           textColor="text-white"
+                          onClick={()=> {
+                            dispatch(actions.editData(item))
+                            setIsEdit(true)
+                          }}
                         />
                         <Button 
                           text='Xóa'
@@ -71,6 +78,7 @@ const ManagePost = () => {
             }
           </tbody>
         </table>
+        {isEdit && <UpdatePost setIsEdit={setIsEdit}/>}
     </div>
   )
 }

@@ -226,7 +226,7 @@ export const getPostsLimitAdminService = (page, id, query) =>
             as: "overviews",
           },
         ],
-        attributes: ["id", "title", "star", "address", "description"],
+        // attributes: ["id", "title", "star", "address", "description"],
       });
       resolve({
         err: response ? 0 : 1,

@@ -8,7 +8,10 @@ import { useSelector } from 'react-redux'
 import validate from "../../utils/Common/validateFileds"
 const {BsCameraFill,ImBin} = icons
 
-const createPost = () => {
+const createPost = ({isEdit}) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {dataEdit} = useSelector(state => state.post)
+  console.log(dataEdit)
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [imagesPreview, setImagesPreview] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -20,18 +23,22 @@ const createPost = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {currentData} = useSelector(state => state.user)
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [payLoad, setPayLoad] = useState({
-    categoryCode:'',
-    title:'',
-    priceNumber:0,
-    areaNumber:0,
-    images:'',
-    address:'',
-    priceCode:'',
-    areaCode:'',
-    description:'',
-    target:'',
-    province:'',
+  const [payLoad, setPayLoad] = useState(() => {
+    const initData = {
+      categoryCode: dataEdit?.categoryCode || '',
+      title: dataEdit?.title || '',
+      priceNumber: dataEdit?.priceNumber * 1000000 || 0,
+      areaNumber:dataEdit?.areaNumber ||0,
+      images: dataEdit?.images || '',
+      address: dataEdit?.address || '',
+      priceCode: dataEdit?.priceCode || '',
+      areaCode: dataEdit?.areaCode || '',
+      description: dataEdit?.description || '',
+      target: dataEdit?.target || '',
+      province: dataEdit?.province || '',
+    }
+
+    return initData  
   });
   
   const handleFiles = async(e) => {
