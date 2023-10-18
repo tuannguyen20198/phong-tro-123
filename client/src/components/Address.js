@@ -5,24 +5,28 @@ import { UseSelector, useSelector } from 'react-redux'
 
 const Address = ({setPayLoad,invalidFileds,setInValidFileds}) => {
 
-  const {dataEdit} = useSelector(state => state.post)
-
+  const { dataEdit } = useSelector(state => state.post)
+  
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [province, setProvince] = useState('');
   const [district, setDistrict] = useState('');
   const [reset, setReset] = useState(false);
   useEffect(() => {
-    let addressArr = dataEdit?.address?.split(',')
-    let foundProvince = provinces.length > 0 && provinces?.find(item => item.province_name === addressArr[addressArr.length - 1]?.trim())
-    setProvince(foundProvince ? foundProvince.province_id : '')
-  },[provinces])
+    if (dataEdit) {
+      let addressArr = dataEdit?.address?.split(',')
+      let foundProvince = provinces?.length && provinces?.find(item => item.province_name === addressArr[addressArr.length - 1]?.trim())
+      setProvince(foundProvince ? foundProvince.province_id : '')
+    }
+  },[dataEdit, provinces])
   
     useEffect(() => {
-    let addressArr = dataEdit?.address?.split(',')
-    let foundDistrict = districts.length > 0 && districts?.find(item => item.district_name === addressArr[addressArr.length - 2]?.trim())
-    setDistrict(foundDistrict ? foundDistrict.district_id : '')
-  },[districts])
+    if (dataEdit) {        
+      let addressArr = dataEdit?.address?.split(',')
+      let foundDistrict = districts?.length > 0 && districts?.find(item => item.district_name === addressArr[addressArr.length - 2]?.trim())
+      setDistrict(foundDistrict ? foundDistrict.district_id : '')
+    }
+  },[dataEdit, districts])
 
   useEffect(() => {
     const fetchPublicProvince = async() => {
@@ -40,7 +44,6 @@ const Address = ({setPayLoad,invalidFileds,setInValidFileds}) => {
       if (response.status === 200) {
         setDistricts(response?.data?.results)
       }
-      console.log(response)
     }
     province && fetchPublicDistrict()
     !province ? setReset(true) : setReset(false)

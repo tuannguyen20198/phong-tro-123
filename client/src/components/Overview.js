@@ -12,6 +12,7 @@ const targets = [
 const Overview = ({payLoad,setPayLoad,invalidFileds,setInValidFileds}) => {
   const {categories} = useSelector(state => state.app)
   const { currentData } = useSelector(state => state.user)
+  const {dataEdit} = useSelector(state => state.post)
   return (
     <div>
       <h2 className='font-semibold text-xl py-4'>Thông tin mô tả</h2>
@@ -73,7 +74,7 @@ const Overview = ({payLoad,setPayLoad,invalidFileds,setInValidFileds}) => {
             setInValidFileds={setInValidFileds}
             />
           <Select 
-              value={payLoad.target} 
+              value={dataEdit?.overviews?.target || payLoad.target} 
               setValue = {setPayLoad} 
               name ='target' 
               options={targets} 

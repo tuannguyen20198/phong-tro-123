@@ -1,46 +1,62 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Overview, Address,Loading,Button } from "../../components"
 import { apiCreatePost, apiUploadImages } from '../../services'
 import icons from '../../utils/icons'
 import { getCodes,getCodesArea } from '../../utils/Common/getCodes'
 import Swal from "sweetalert2"
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import validate from "../../utils/Common/validateFileds"
 const {BsCameraFill,ImBin} = icons
 
 const createPost = ({isEdit}) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {dataEdit} = useSelector(state => state.post)
-  console.log(dataEdit)
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [imagesPreview, setImagesPreview] = useState([]);
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isLoading, setisLoading] = useState(false)  
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [invalidFileds, setInValidFileds] = useState([]);
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {prices,areas,categories,provinces} = useSelector(state => state.app)
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {currentData} = useSelector(state => state.user)
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {dataEdit} = useSelector(state => state.post)
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (dataEdit) {
+      let images = JSON.parse(dataEdit?.images?.image)
+      images && setImagesPreview(images)
+    }
+    return () => {
+      
+    }
+  }, [dataEdit])
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [payLoad, setPayLoad] = useState(() => {
     const initData = {
       categoryCode: dataEdit?.categoryCode || '',
       title: dataEdit?.title || '',
       priceNumber: dataEdit?.priceNumber * 1000000 || 0,
-      areaNumber:dataEdit?.areaNumber ||0,
-      images: dataEdit?.images || '',
+      areaNumber: dataEdit?.areaNumber || 0,
+      images:dataEdit?.images?.image ? JSON.parse(dataEdit?.images?.image) : '',
       address: dataEdit?.address || '',
       priceCode: dataEdit?.priceCode || '',
       areaCode: dataEdit?.areaCode || '',
-      description: dataEdit?.description || '',
+      description:dataEdit.description ? JSON.parse(dataEdit?.description) : '',
       target: dataEdit?.target || '',
       province: dataEdit?.province || '',
     }
 
     return initData  
   });
-  
+  console.log(dataEdit)
   const handleFiles = async(e) => {
     e.stopPropagation()
     setisLoading(true)
@@ -80,11 +96,11 @@ const createPost = ({isEdit}) => {
       target: payLoad.target || 'Tất cả',
       label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad?.address?.split(',')[0]}`
     }
+    console.log(finalPayload)
     const result = validate(finalPayload,setInValidFileds)
-    console.log(result)
-    console.log(invalidFileds)
+  
     if (result === 0) {
-        const response = await apiCreatePost(finalPayload)
+      const response = await apiCreatePost(finalPayload)
       if (response?.data.err === 0) {
         Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
           setPayLoad({
@@ -153,7 +169,7 @@ const createPost = ({isEdit}) => {
           </div>
             <Button 
               onClick={handleSubmit}
-              text='Tạo mới' 
+              text={isEdit ? "Cập nhật" : "Tạo mới"}
               bgColor="bg-green-600" 
               textColor="text-white"
             />
