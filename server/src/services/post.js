@@ -302,3 +302,17 @@ new Promise(async (resolve, reject) => {
     reject(error);
   }
 });
+export const deletePost = (postId) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const response = await db.Post.destroy({
+        where: {id:postId},
+      });
+      resolve({
+        err: response > 0 ? 0 : 1,
+        msg: response > 0 ? "Delete" : "No post delete.",
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
