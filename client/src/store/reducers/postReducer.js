@@ -5,7 +5,7 @@ const initState = {
   count: 0,
   newPosts: [],
   potsOfCurrent: [],
-  dataEdit: {}
+  dataEdit: null
 };
 const postReducer = (state = initState, action) => {
   switch (action.type) {
@@ -32,7 +32,12 @@ const postReducer = (state = initState, action) => {
     case actionTypes.EDIT_DATA:
       return {
         ...state,
-        dataEdit: action.dataEdit || {}
+        dataEdit: action.dataEdit || null
+      }
+     case actionTypes.RESET_DATAEDIT:
+      return {
+        ...state,
+        dataEdit: null
       }
     default:
       return state;

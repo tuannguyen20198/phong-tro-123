@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Overview, Address,Loading,Button } from "../../components"
-import { apiCreatePost, apiUploadImages } from '../../services'
+import { apiCreatePost, apiUpdatePost, apiUploadImages } from '../../services'
 import icons from '../../utils/icons'
 import { getCodes,getCodesArea } from '../../utils/Common/getCodes'
 import Swal from "sweetalert2"
 import { useSelector,useDispatch } from 'react-redux'
 import validate from "../../utils/Common/validateFileds"
+import * as actions from "../../store/action"
+import { resetDataEdit } from '../../store/action'
+
 const {BsCameraFill,ImBin} = icons
 
 const createPost = ({isEdit}) => {
@@ -29,6 +32,9 @@ const createPost = ({isEdit}) => {
   const {dataEdit} = useSelector(state => state.post)
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useDispatch()
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (dataEdit) {
       let images = JSON.parse(dataEdit?.images?.image)
@@ -49,8 +55,8 @@ const createPost = ({isEdit}) => {
       address: dataEdit?.address || '',
       priceCode: dataEdit?.priceCode || '',
       areaCode: dataEdit?.areaCode || '',
-      description:dataEdit.description ? JSON.parse(dataEdit?.description) : '',
-      target: dataEdit?.target || '',
+      description:dataEdit?.description ? JSON.parse(dataEdit?.description) : '',
+      target: dataEdit?.overviews?.target || '',
       province: dataEdit?.province || '',
     }
 
@@ -96,31 +102,49 @@ const createPost = ({isEdit}) => {
       target: payLoad.target || 'Tất cả',
       label: `${categories?.find(item => item.code === payLoad?.categoryCode)?.value} ${payLoad?.address?.split(',')[0]}`
     }
-    console.log(finalPayload)
     const result = validate(finalPayload,setInValidFileds)
   
     if (result === 0) {
-      const response = await apiCreatePost(finalPayload)
+      if (dataEdit) {
+        finalPayload.postId = dataEdit.id
+        finalPayload.attributesId = dataEdit.attributesId
+        finalPayload.imagesId = dataEdit.imagesId
+        finalPayload.overviewId = dataEdit.overviewId
+      }
+      const response = await apiUpdatePost(finalPayload)
       if (response?.data.err === 0) {
+        Swal.fire('Thành công', 'Đã chỉnh sửa thành công','success').then(() => {
+          resetPayLoad()
+          dispatch(resetDataEdit())
+        })
+      }else{
+        Swal.fire('Oops!', 'Có lỗi gì đó','error')
+      }
+    }else{
+        const response = await apiCreatePost(finalPayload)
+        if (response?.data.err === 0) {
         Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
-          setPayLoad({
-            categoryCode: '',
-            title: '',
-            priceNumber: 0,
-            areaNumber: 0,
-            images: '',
-            address: '',
-            priceCode: '',
-            areaCode: '',
-            description: '',
-            target: '',
-            province: '',
-          }) 
+          resetPayLoad()
         })
       }else{
         Swal.fire('Oops!', 'Có lỗi gì đó','error')
       }
     }
+  }
+  const resetPayLoad = () => {
+    setPayLoad({
+      categoryCode: '',
+      title: '',
+      priceNumber: 0,
+      areaNumber: 0,
+      images: '',
+      address: '',
+      priceCode: '',
+      areaCode: '',
+      description: '',
+      target: '',
+      province: '',
+    }) 
   }
   
   return (

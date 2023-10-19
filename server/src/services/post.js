@@ -124,7 +124,7 @@ export const createNewPostService = (body, userId) =>
       const labelCode = generateCode(body.label)
       const hashtag = `#${Math.floor(Math.random() * Math.pow(10,6))}`
       const currentDate = generateDate();
-      const response = await db.Post.create({
+      await db.Post.create({
         id: generateId(),
         title: body.title,
         labelCode,
@@ -184,9 +184,8 @@ export const createNewPostService = (body, userId) =>
         }
       })
       resolve({
-        err: response ? 0 : 1,
-        msg: response ? "Ok" : "Getting posts id failed",
-        response
+        err: 0,
+        msg: "Ok",
       });
     } catch (error) {
       reject(error);
@@ -237,3 +236,69 @@ export const getPostsLimitAdminService = (page, id, query) =>
       reject(error);
     }
   });
+export const updatePost = ({postId,overviewId,imagesId,attributesId, ...body}) =>
+new Promise(async (resolve, reject) => {
+  try {
+    const labelCode = generateCode(body.label)
+    await db.Post.update({
+        title: body.title,
+        labelCode,
+        address: body?.address || null,
+        categoryCode: body.categoryCode,
+        description: JSON.stringify(body.description ) || null,
+        areaCode: body.areaCode || null,
+        priceCode: body.priceCode || null,
+        provinceCode: body?.province?.includes('Thành phố') ? generateCode(body?.province?.replace('Thành phố ', '')) : generateCode(body?.province?.replace('Tỉnh ', '')) || null,
+        priceNumber: body.priceNumber,
+        areaNumber: body.areaNumber
+      },{
+        where: {id:postId}
+      });
+      await db.Attribute.update({
+        price: body.priceNumber < 1 ? `${+body.priceNumber * 1000000}đồng/tháng` : `${body.priceNumber}triệu/tháng`,
+        acreage: `${body.areaNumber}m2`,
+        published: moment(new Date).format('DD/MM/YYYY'),
+      },{
+        where: {id:attributesId}
+      });
+      await db.Image.update({
+        image: JSON.stringify(body.images),
+      },{
+        where: {id:imagesId}
+      });
+      await db.Overview.update({
+        area: body.label,
+        type: body.category,
+        target: body.target,
+      },{
+        where: {id:overviewId}
+      });
+      await db.Province.findOrCreate({
+        where:{
+          [Op.or]:[
+            {value: body?.province.replace('Thành phố ', '')},
+            {value: body?.province.replace('Tỉnh ', '')}
+          ]
+        },
+        defaults:{
+          code: body?.province?.includes('Thành phố') ? generateCode(body?.province?.replace('Thành phố ', '')) : generateCode(body?.province?.replace('Tỉnh ', '')),
+          value:body?.province?.includes('Thành phố') ? body?.province?.replace('Thành phố ', '') : body?.province?.replace('Tỉnh ', '')
+        }
+      })
+      await db.Label.findOrCreate({
+        where:{
+          code: labelCode
+        },
+        defaults:{
+          code: labelCode,
+          value: body.label
+        }
+      })
+    resolve({
+      err:  0,
+      msg: 'Updated',
+    });
+  } catch (error) {
+    reject(error);
+  }
+});

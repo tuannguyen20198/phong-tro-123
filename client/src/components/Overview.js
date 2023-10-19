@@ -74,7 +74,7 @@ const Overview = ({payLoad,setPayLoad,invalidFileds,setInValidFileds}) => {
             setInValidFileds={setInValidFileds}
             />
           <Select 
-              value={dataEdit?.overviews?.target || payLoad.target} 
+              value={payLoad.target} 
               setValue = {setPayLoad} 
               name ='target' 
               options={targets} 

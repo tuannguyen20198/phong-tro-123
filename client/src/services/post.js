@@ -78,3 +78,17 @@ export const apiCreatePost = (payload) =>
       reject(error);
     }
   });
+
+  export const apiUpdatePost = (payload) =>
+  new Promise(async (resolve, reject) => {
+    const response = await axiosConfig({
+      method: "put",
+      url: `api/v1/post/update`,
+      data: payload
+    });
+    resolve(response);
+    try {
+    } catch (error) {
+      reject(error);
+    }
+  });
