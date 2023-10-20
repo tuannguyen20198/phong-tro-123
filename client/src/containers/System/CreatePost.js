@@ -105,31 +105,32 @@ const createPost = ({isEdit}) => {
     const result = validate(finalPayload,setInValidFileds)
   
     if (result === 0) {
-      if (dataEdit) {
+      if (dataEdit && isEdit) {
         finalPayload.postId = dataEdit.id
         finalPayload.attributesId = dataEdit.attributesId
         finalPayload.imagesId = dataEdit.imagesId
         finalPayload.overviewId = dataEdit.overviewId
-      }
-      const response = await apiUpdatePost(finalPayload)
-      if (response?.data.err === 0) {
-        Swal.fire('Thành công', 'Đã chỉnh sửa thành công','success').then(() => {
-          resetPayLoad()
-          dispatch(resetDataEdit())
-        })
-      }else{
-        Swal.fire('Oops!', 'Có lỗi gì đó','error')
-      }
-    }else{
-        const response = await apiCreatePost(finalPayload)
+
+        const response = await apiUpdatePost(finalPayload)
         if (response?.data.err === 0) {
-        Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
-          resetPayLoad()
-        })
-      }else{
-        Swal.fire('Oops!', 'Có lỗi gì đó','error')
+          Swal.fire('Thành công', 'Đã chỉnh sửa thành công','success').then(() => {
+            resetPayLoad()
+            dispatch(resetDataEdit())
+          })
+        }else{
+          Swal.fire('Oops!', 'Có lỗi gì đó','error')
+        }
+        }else{
+            const response = await apiCreatePost(finalPayload)
+            if (response?.data.err === 0) {
+            Swal.fire('Thành công', 'Đã thêm bài đăng mới','success').then(() => {
+              resetPayLoad()
+            })
+          }else{
+            Swal.fire('Oops!', 'Có lỗi gì đó','error')
+          }
+        }
       }
-    }
   }
   const resetPayLoad = () => {
     setPayLoad({
@@ -149,7 +150,7 @@ const createPost = ({isEdit}) => {
   
   return (
     <div className='px-6 gap-4'>
-      <h1 className='text-3xl font-medium py-4 border-b border-gray-200'>Đăng tin mới</h1>
+      <h1 className='text-3xl font-medium py-4 border-b border-gray-200'>{isEdit ? "Chỉnh sửa tin đăng" : "Tạo tin mới"}</h1>
       <div className='flex gap-4'>
         <div className='py-4 flex flex-col gap-8 flex-auto'>
           <Address setInValidFileds={setInValidFileds} invalidFileds={invalidFileds} payLoad={payLoad} setPayLoad={setPayLoad}/>
