@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { InputReadOnly , InputFromV2, Button } from '../../components'
 import anonAvatar from "../../assets/anon-avatar.png"
-import { useSelector } from 'react-redux'
+import { useSelector , useDispatch } from 'react-redux'
 import { apiUploadImages, apiUpdateUser } from '../../services'
 import validate from '../../utils/Common/validateFileds'
+import { blobToBase64, fileToBase64 } from '../../utils/Common/tobase64'
+import { getCurrent } from '../../store/action'
+import Swal from 'sweetalert2'
 
 const EditAccount = () => {
-  const [invalidFileds, setInValidFileds ] = useState([])
   const { currentData } = useSelector(state => state.user)
-  const [imagesPreview, setImagesPreview] = useState([]);
-  const [isLoading, setisLoading] = useState(false)  
+  const dispatch = useDispatch()
 
   const [payload, setPayload] = useState({
     name: currentData.name || '',
-    avatar: currentData?.avatar || '',
+    avatar: blobToBase64(currentData?.avatar) || '',
     fbUrl: currentData?.fbUrl || '',
     zalo: currentData?.zalo || '',
   });
@@ -21,30 +22,21 @@ const EditAccount = () => {
   console.log(currentData)
   const handleSubmit = async() => {
     const response = await apiUpdateUser(payload)
-    console.log(response)
-  }
-  const handleUploadFile = async(e) => {
-    const image = e.target.files[0]
-    const formData = new FormData()
-    formData.append('file', image)
-    formData.append('upload_preset', process.env.REACT_APP_UPLOAD_ASSETS_NAME)
-    const response  = await apiUploadImages(formData)
-    if (response.status === 200) {
-      setPayload(prev => ({
-        ...prev,
-        avatar: response?.data.secure_url
-      }))
+    if (response?.data.err === 0) {
+      Swal.fire('Done','Chỉnh sửa thông tin cá nhân thành công','success').then(() => {
+        dispatch(getCurrent())
+      })
+    }else{
+      Swal.fire('Done','Chỉnh sửa thông tin cá nhân không thành công','error')
     }
   }
-  
-  const handleDeleteImage = (image) => {
-    setImagesPreview(prev => prev?.filter(item => item !== image))
+  const handleUploadFile = async(e) => {
+    const imageBase64 = await fileToBase64(e.target.files[0])
     setPayload(prev => ({
       ...prev,
-      images: prev.images?.filter(item => item !== image)
+      avatar: imageBase64
     }))
   }
-  
 
   return (
     <div className='flex flex-col h-full items-center'>      
@@ -84,7 +76,7 @@ const EditAccount = () => {
         <div className='flex mb-6'>
           <label className='w-[16%] flex-none' htmlFor="avatar">Ảnh đại diện</label>
           <div>
-            <img src={payload.avatar || anonAvatar} alt='avatar' className='w-28 h-28 rounded-full object-cover'/>
+            <img src={payload?.avatar|| anonAvatar} alt='avatar' className='w-28 h-28 rounded-full object-cover'/>
             <input onChange={handleUploadFile} type="file" className='appearance-none my-4' id="avatar"/>
           </div>
         </div>

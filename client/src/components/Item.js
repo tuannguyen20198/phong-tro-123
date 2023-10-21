@@ -17,7 +17,6 @@ const Item = ({
   id
 }) => {
   const [isHoverHeart, setIsHoverHeart] = useState(false);
-  const navigate = useNavigate()
   const handleStar = (star) => {
     let stars  = []
     for (let i = 1; i < +star; i++) stars.push(<GrStar className="star-item"size={18} color="yellow" />)
