@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { formatVietnameseToString } from "../../utils/Common/formatVietnameseToString";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/action"
+import {path} from "../../utils/constant"
 
 const nav = [
   { name: "Trang chủ", path: "home" },
@@ -48,6 +49,12 @@ const Navigation = ({isAdmin}) => {
               </div>
             );
           })}
+          <NavLink
+          to={path.CONTACT}
+          className={({ isActive }) => (isActive ? active : notActive)}
+        >
+          Liên hệ
+        </NavLink>
       </div>
     </div>
   );

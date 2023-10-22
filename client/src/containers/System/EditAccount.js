@@ -76,7 +76,7 @@ const EditAccount = () => {
         <div className='flex mb-6'>
           <label className='w-[16%] flex-none' htmlFor="avatar">Ảnh đại diện</label>
           <div>
-            <img src={blobToBase64(payload?.avatar) || anonAvatar} alt='avatar' className='w-28 h-28 rounded-full object-cover'/>
+            <img src={payload?.avatar || anonAvatar} alt='avatar' className='w-28 h-28 rounded-full object-cover'/>
             <input onChange={handleUploadFile} type="file" className='appearance-none my-4' id="avatar"/>
           </div>
         </div>
