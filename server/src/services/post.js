@@ -72,6 +72,10 @@ export const getPostsLimitService = (page, { limitPost,order,...query }, {priceN
             as: "user",
             attributes: ["name", "zalo", "phone"],
           },
+          {
+            model: db.Overview,
+            as: "overviews",
+          },
         ],
         attributes: ["id", "title", "star", "address", "description"],
       });

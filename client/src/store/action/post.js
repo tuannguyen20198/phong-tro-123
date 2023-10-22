@@ -71,6 +71,31 @@ export const getNewPosts = (query) => async (dispatch) => {
     });
   }
 };
+export const getOutstandingPost = () => async (dispatch) => {
+  try {
+    const response = await apiGetPostsLimit({
+      limitPost: 5,
+      order:['star','DESC']
+    });
+    if (response?.data.err === 0) {
+      dispatch({
+        type: actionTypes.GET_OUTSTANDING,
+        outStandigPost: response.data.response.rows,
+      });
+    } else {
+      dispatch({
+        type: actionTypes.GET_OUTSTANDING,
+        msg: response.data.msg,
+        outStandigPost: null,
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_OUTSTANDING,
+      outStandigPost: null,
+    });
+  }
+};
 export const getPostsLimitAdmin = (query) => async (dispatch) => {
   try {
     const response = await apiGetPostsLimitAdmin(query);

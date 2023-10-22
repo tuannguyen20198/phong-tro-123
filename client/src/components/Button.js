@@ -4,6 +4,7 @@ const Button = ({
   textColor,
   bgColor,
   IcAfter,
+  IcBefore,
   onClick,
   fullWidth,
   px,
@@ -17,6 +18,7 @@ const Button = ({
         "w-full"}`}
       onClick={onClick}
     >
+      {IcBefore && <span><IcBefore /></span>}
       <span className="text-center">{text}</span>
       {IcAfter && <span><IcAfter /></span>}
     </button>

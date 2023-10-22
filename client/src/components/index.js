@@ -20,3 +20,4 @@ export {default as InputFromV2} from "./InputFromV2";
 export {default as Loading} from "./Loading";
 export {default as UpdatePost} from "./UpdatePost";
 export {default as SliderCustom} from "./SliderCustom";
+export {default as BoxInfo} from "./BoxInfo";
