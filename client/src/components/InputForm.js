@@ -23,10 +23,9 @@ const InputForm = ({
         onChange={(e) =>
           setValue((prev) => ({ ...prev, [keyPayload]: e.target.value }))
         }
-        onFocus={() => setInvalidFields([])}
+        onFocus={() => setInvalidFields && setInvalidFields([])}
       />
-      {invalidFields.length > 0 &&
-        invalidFields.some((i) => i.name === keyPayload) && (
+      {invalidFields?.some((i) => i.name === keyPayload) && (
           <small className="text-red-500 italic">
             {invalidFields.find((i) => i.name === keyPayload)?.message}
           </small>

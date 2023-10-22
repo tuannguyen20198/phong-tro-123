@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import {Home, Login, Rental, Homepage, DetailPost,SearchDetail} from "./containers/Public";
+import {Home, Login, Rental, Homepage, DetailPost,SearchDetail, Contact} from "./containers/Public";
 import {path} from "./utils/constant";
 import { CreatePost, System,ManagePost , EditAccount } from "./containers/System";
 import * as actions from "../src/store/action";
@@ -32,6 +32,7 @@ function App() {
           <Route path={path.CHO_THUE_PHONG_TRO} element={<Rental />} />
           <Route path={path.NHA_CHO_THUE} element={<Rental />} />
           <Route path={path.SEARCH} element={<SearchDetail />} />
+          <Route path={path.CONTACT} element={<Contact />} />
           <Route
             path={path.DETAL_POST__TITLE__POSTID}
             element={<DetailPost />}

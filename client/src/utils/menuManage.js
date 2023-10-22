@@ -22,7 +22,13 @@ const menuManage = [
     {
         id: 3,
         text: 'Thông tin tài khoản',
-        path:'/he-thong/thong-tin-tai-khoan',
+        path:'/he-thong/sua-thong-tin-ca-nhan',
+        icon:<BiUserPin/>
+    },
+    {
+        id: 4,
+        text: 'lien-he',
+        path:'/lien-he',
         icon:<BiUserPin/>
     }
 ]
