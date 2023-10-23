@@ -6,6 +6,8 @@ import { BoxInfo, SliderCustom,RelatedPost } from "../../components";
 import icons from "../../utils/icons";
 import { BsHash, BsStopwatch } from "react-icons/bs";
 import objToArr from "../../utils/Common/objToArr";
+import { useNavigate,createSearchParams } from "react-router-dom";
+import { path } from "../../utils/constant"
 
 const {
   HiLocationMarker,
@@ -18,10 +20,21 @@ const DetailPost = () => {
   const { postId } = useParams();
   const dispatch = useDispatch();
   const { posts } = useSelector(state => state.post);
+  const navigate = useNavigate()
 
   useEffect(() => {
     postId && dispatch(getPostsLimit({ id: postId }));
   }, [postId]);
+
+  const handleFilterLabel = () => {
+    const titleSearch = `Tìm kiếm tin đăng theo chuyên mục ${posts[0]?.labelData?.value}`
+    navigate({
+      pathname: `/${path.SEARCH}`,
+      search: createSearchParams({labelCode: posts[0]?.labelData?.code}).toString()
+    },{state: {titleSearch}});
+  }
+  
+
   return (
     <div className="w-full flex gap-4">
       <div className="w-[70%]">
@@ -37,8 +50,11 @@ const DetailPost = () => {
             </h2>
             <div className="flex items-center gap-2">
               <span>Chuyên mục:</span>
-              <span className="text-blue-600 underline font-medium hover:text-orange-600 cursor-pointer">
-                {posts[0]?.overviews?.area}
+              <span 
+                className="text-blue-600 underline font-medium hover:text-orange-600 cursor-pointer"
+                onClick={handleFilterLabel}
+              >
+                {posts[0]?.labelData?.value}
               </span>
             </div>
             <div className="flex items-center gap-2">
