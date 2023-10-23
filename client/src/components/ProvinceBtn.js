@@ -1,8 +1,21 @@
 import React, { memo } from "react";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import { path } from "../utils/constant";
 
-const ProvinceBtn = ({ name, image }) => {
+const ProvinceBtn = ({ name, image,provinceCode }) => {
+  const navigate = useNavigate()
+  const handleOnClick = () => {
+    const titleSearch = `Cho thuê ${name}, Phòng trọ giá rẻ`
+    navigate({
+      pathname: path.SEARCH,
+      search: createSearchParams({provinceCode}).toString()
+    },{ state : {titleSearch}})
+  }
+  
   return (
-    <div className="cursor-pointer text-blue-700 shadow-md rounded-br-md hover:text-orange-600">
+    <div className="cursor-pointer text-blue-700 shadow-md rounded-br-md hover:text-orange-600"
+    onClick={handleOnClick}
+    >
       <img
         src={image}
         alt={name}
