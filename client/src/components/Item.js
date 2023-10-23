@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { formatVietnameseToString } from "../utils/Common/formatVietnameseToString"; 
 import { path } from "../utils/constant";
 
-const indexs = [0, 1, 2, 3];
 const { GrStar, RiHeartFill, RiHeartLine, BsBookmarkStarFill } = icons;
 
 const Item = ({
@@ -28,7 +27,7 @@ const Item = ({
       <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/',''))}/${id}`} className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
         {images.length > 0 &&
           images
-            .filter((i, index) => indexs.some((i) => i === index))
+            .filter((i, index) => [...Array(4).keys()].some((i) => i === index))
             ?.map((i, index) => {
               return (
                 <img
@@ -93,18 +92,21 @@ const Item = ({
             <p>{user?.name}</p>
           </div>
           <div className="flex items-center gap-1 rounded-md">
-            <button
+            <a
               type="button"
               className="bg-blue-700 text-white p-2 rounded-md"
+              href="tel:093812192"
+              target="_blank"
             >
               {`Gọi ${user?.phone}`}
-            </button>
-            <button
-              type="button"
+            </a>
+            <a
               className="border border-blue-500 p-2 rounded-md text-blue-500"
+              href={`https://zalo.me/${user.zalo}`}
+              target="_blank"
             >
               Nhắn Zalo
-            </button>
+            </a>
           </div>
         </div>
       </div>

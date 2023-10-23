@@ -7,7 +7,7 @@ export const getCodePrice = (totals,min,max) => {
     return ({
       ...item,
       min: arrMaxMin.length === 2 ? arrMaxMin[0] : arrMaxMin[0] === min ? 0 : arrMaxMin[0] ,
-      max: arrMaxMin.length === 2 ? arrMaxMin[1] : arrMaxMin[0] === max ? 9999999 : arrMaxMin[0]
+      max: arrMaxMin.length === 2 ? arrMaxMin[1] : arrMaxMin[0] === max ? 99999 : arrMaxMin[0]
     })
   })
 }
@@ -19,7 +19,7 @@ export const getCodeArea = (totals, min, max) => {
     return ({
       ...item,
       min: arrMaxMin.length === 2 ? arrMaxMin[0] : arrMaxMin[0] === min ? 0 : arrMaxMin[0] ,
-      max: arrMaxMin.length === 2 ? arrMaxMin[1] : arrMaxMin[0] === max ? 9999999 : arrMaxMin[0]
+      max: arrMaxMin.length === 2 ? arrMaxMin[1] : arrMaxMin[0] === max ? 99999 : arrMaxMin[0]
     })
     
   })

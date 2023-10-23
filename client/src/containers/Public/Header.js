@@ -90,6 +90,7 @@ const Header = () => {
               textColor="text-white"
               bgColor="bg-secondary2"
               IcAfter={AiOutlinePlusCircle}
+              onClick={() => navigate('/he-thong/tao-moi-tin-dang')}
             />
         </div>
       </div>

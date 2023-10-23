@@ -38,7 +38,7 @@ export const prices = [
   },
   {
     min: 15,
-    max: 999999,
+    max: 99999,
     value: "Trên 15 triệu",
   },
 ];
@@ -71,7 +71,7 @@ export const areas = [
   },
   {
     min: 90,
-    max: 999999,
+    max: 99999,
     value: "Trên 90m",
   },
 ];
