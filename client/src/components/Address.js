@@ -23,7 +23,7 @@ const Address = ({setPayLoad,invalidFileds,setInValidFileds}) => {
     useEffect(() => {
       if (dataEdit) {
         let addressArr = dataEdit?.address?.split(',')
-        let foundDistrict = districts?.length > 0 && districts?.find(item => item.district_name === addressArr[addressArr.length - 2]?.trim())
+        let foundDistrict = districts?.length > 0 && districts?.find(item => item.district_name === addressArr[addressArr?.length - 2]?.trim())
         setDistrict(foundDistrict ? foundDistrict.district_id : '')
       }
   },[dataEdit, districts])

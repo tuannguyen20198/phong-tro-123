@@ -22,7 +22,7 @@ const Sitem = ({title, price, image, createdAt,star}) => {
       />
       <div className="w-full flex-auto flex flex-col justify-between gap-1">
         <h4 className="text-blue-600 text-[14px]">
-          {handleStar(+star).length > 0 && handleStar(+star)?.map((star,number)=>{
+          {handleStar(+star)?.length > 0 && handleStar(+star)?.map((star,number)=>{
             return(
                 <span key={number}>{star}</span>
               )

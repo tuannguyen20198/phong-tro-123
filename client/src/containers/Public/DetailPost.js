@@ -40,7 +40,7 @@ const DetailPost = () => {
       <div className="w-[70%]">
         <SliderCustom
           images={
-            posts && posts.length > 0 && JSON.parse(posts[0]?.images?.image)
+            posts && posts?.length > 0 && JSON.parse(posts[0]?.images?.image)
           }
         />
         <div className="bg-white rounded-md shadow-md p-4">

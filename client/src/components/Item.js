@@ -25,7 +25,7 @@ const Item = ({
   return (
     <div className="w-full flex items-start py-4">
       <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/',''))}/${id}`} className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer">
-        {images.length > 0 &&
+        {images?.length > 0 &&
           images
             .filter((i, index) => [...Array(4).keys()].some((i) => i === index))
             ?.map((i, index) => {
@@ -39,7 +39,7 @@ const Item = ({
               );
             })}
         <span className="bg-overlay-70 text-white px-2 rounded-md absolute bottom-4 left-1">
-          {`${images.length} ảnh`}
+          {`${images?.length} ảnh`}
         </span>
         <span
           className="text-white absolute bottom-1 right-8"
@@ -57,7 +57,7 @@ const Item = ({
       <div className="w-3/5">
         <div className="flex justify-between gap-4 w-full">
           <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/',''))}/${id}`} className="text-red-600 font-medium py-[2px]">
-            {handleStar(+star).length > 0 && handleStar(+star).map((star,number)=>{
+            {handleStar(+star)?.length > 0 && handleStar(+star).map((star,number)=>{
               return(
                 <span key={number}>{star}</span>
               )
@@ -76,8 +76,8 @@ const Item = ({
             {attributes?.acreage}
           </span>
           <span className="flex-3 whitespace-nowrap overflow-hidden text-ellipsis">{`${
-            address.split(",")[address.split(",").length - 2]
-          }${address.split(",")[address.split(",").length - 1]}`}</span>
+            address.split(",")[address.split(",")?.length - 2]
+          }${address.split(",")[address.split(",")?.length - 1]}`}</span>
         </div>
         <p className="text-gray-500 w-full h-[50px] text-ellipsis overflow-hidden ">
           {description}

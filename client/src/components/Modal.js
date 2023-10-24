@@ -49,7 +49,7 @@ const Modal = ({ setIsShowodal, content, name, handleSubmit, queries, arrMinMax,
   const handleActive = (code, value) => {
     setActivedEl(code);
     let arrMaxMin = name === "price" ? getNumbersPrice(value) : getNumbersArea(value);
-    if (arrMaxMin.length === 1) {
+    if (arrMaxMin?.length === 1) {
       if (arrMaxMin[0] === 1) {
         setPersent1(0);
         setPersent2(convertto100(1));
@@ -63,7 +63,7 @@ const Modal = ({ setIsShowodal, content, name, handleSubmit, queries, arrMinMax,
         setPersent2(100);
       }
     }
-    if (arrMaxMin.length === 2) {
+    if (arrMaxMin?.length === 2) {
       setPersent1(convertto100(arrMaxMin[0]));
       setPersent2(convertto100(arrMaxMin[1]));
     }

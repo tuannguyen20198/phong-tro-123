@@ -38,7 +38,7 @@ const Pagination = ({page}) => {
         />
       )}
       {(!isHideStart && currentPage !== 4) && <PageNumber text={"..."} type="start" />}
-      {arrPage.length > 0 &&
+      {arrPage?.length > 0 &&
         arrPage.map((item) => {
           return (
             <PageNumber
